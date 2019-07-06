@@ -1,0 +1,11 @@
+Player 1 {{player1}}
+
+<mat-grid-list cols="6" rowHeight="1:1">
+  <mat-grid-tile *ngFor="let character of snapshot.player1.characters"><app-character character="{{character.name}}" stocks="{{character.stocks}}"></app-character></mat-grid-tile>
+</mat-grid-list>
+
+Player 2 {{player2}}
+
+<mat-grid-list cols="6" rowHeight="1:1">
+  <mat-grid-tile *ngFor="let character of snapshot.player2.characters"><app-character character="{{character.name}}" stocks="{{character.stocks}}"></app-character></mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,15 @@
+<form class="setup-form">
+  <mat-form-field class="example-full-width">
+    <input matInput i18n-placeholder placeholder="Player 1" [(ngModel)]="player1Name" name="player1Name">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput i18n-placeholder placeholder="Player 2" [(ngModel)]="player2Name" name="player2Name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" i18n-placeholder placeholder="stock count" [(ngModel)]="stockCount" name="stockCount">
+  </mat-form-field>
+
+  <button mat-flat-button color="primary" i18n (click)="startBattle()">Start</button>
+</form>
