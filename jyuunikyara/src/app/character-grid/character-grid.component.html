@@ -1,11 +1,25 @@
-Player 1 {{player1}}
+<div class="wrapper">
 
-<mat-grid-list cols="6" rowHeight="1:1">
-  <mat-grid-tile *ngFor="let character of snapshot.player1.characters"><app-character character="{{character.name}}" stocks="{{character.stocks}}"></app-character></mat-grid-tile>
-</mat-grid-list>
+<mat-card class="player-card">
+  <mat-card-header>
+    <mat-card-title>Player 1: {{player1}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-grid-list cols="2" rowHeight="1:1">
+      <mat-grid-tile *ngFor="let character of snapshot.player1.characters" [style.background-image]="'url(assets/icons/vanilla/' + character.name + '.png)'" class="character-tile"><app-character character="{{character.name}}" stocks="{{character.stocks}}"></app-character></mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>
 
-Player 2 {{player2}}
+<mat-card class="player-card">
+  <mat-card-header>
+    <mat-card-title>Player 2: {{player2}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-grid-list cols="2" rowHeight="1:1">
+      <mat-grid-tile *ngFor="let character of snapshot.player1.characters" [style.background-image]="'url(assets/icons/vanilla/' + character.name + '.png)'" class="character-tile"><app-character character="{{character.name}}" stocks="{{character.stocks}}"></app-character></mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>
 
-<mat-grid-list cols="6" rowHeight="1:1">
-  <mat-grid-tile *ngFor="let character of snapshot.player2.characters"><app-character character="{{character.name}}" stocks="{{character.stocks}}"></app-character></mat-grid-tile>
-</mat-grid-list>
+</div>

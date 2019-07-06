@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BattleService, GameSnapshot } from '../battle.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-character-grid',
@@ -11,19 +12,23 @@ export class CharacterGridComponent implements OnInit {
   player2: string;
   snapshot: GameSnapshot;
 
-  constructor(private battleService: BattleService) { }
+  constructor(private battleService: BattleService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.player1 = this.battleService.getPlayer1Name();
     this.player2 = this.battleService.getPlayer2Name();
 
     const chars = [
-      'Luigi', 'Mario', 'Donkey Kong', 'Link', 'Samus', 'Captain Falcon',
-       'Ness', 'Yoshi', 'Kirby', 'Fox', 'Pikachu', 'Jigglypuff'];
+      'luigi', 'mario', 'donkey_kong', 'link', 'samus', 'captain_falcon',
+       'ness', 'yoshi', 'kirby', 'fox', 'pikachu', 'jigglypuff'];
 
     this.snapshot = {
       player1: {characters: chars.map(char => ({name: char, stocks: 4}))},
       player2: {characters: chars.map(char => ({name: char, stocks: 4}))},
     };
+  }
+
+  getSafeUrl(url: string) {
+    return this.sanitizer.bypassSecurityTrustStyle(url);
   }
 }

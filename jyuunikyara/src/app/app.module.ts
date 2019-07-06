@@ -12,6 +12,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { SetupComponent } from './setup/setup.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatButtonModule,
     FormsModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
