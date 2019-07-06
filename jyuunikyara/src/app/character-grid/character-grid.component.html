@@ -1,17 +1,38 @@
+<mat-card>
+  <mat-card-content i18n>
+    Choose your character!
+  </mat-card-content>
+</mat-card>
+
+<br>
+
 <div class="wrapper">
 
 <mat-card class="player-card">
+
   <mat-card-header>
     <mat-card-title>Player 1: {{player1}}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
+    <div class="transparent-blocker"></div>
+
+    <div class="button-overlay">
+      <button mat-flat-button color="primary" i18n>Choose</button>
+    </div>
+
     <mat-grid-list cols="2" rowHeight="1:1">
-      <mat-grid-tile *ngFor="let character of snapshot.player1.characters" [style.background-image]="'url(assets/icons/vanilla/' + character.name + '.png)'" class="character-tile"><app-character character="{{character.name}}" stocks="{{character.stocks}}"></app-character></mat-grid-tile>
+      <mat-grid-tile *ngFor="let character of snapshot.player1.characters" [style.background-image]="'url(assets/icons/sekirei/' + character.name + '.png)'" class="character-tile"><app-character character="{{character.name}}" stocks="{{character.stocks}}"></app-character></mat-grid-tile>
     </mat-grid-list>
   </mat-card-content>
 </mat-card>
 
 <mat-card class="player-card">
+  <div class="transparent-blocker"></div>
+
+  <div class="button-overlay">
+    <button mat-flat-button color="primary" i18n>Choose</button>
+  </div>
+
   <mat-card-header>
     <mat-card-title>Player 2: {{player2}}</mat-card-title>
   </mat-card-header>
