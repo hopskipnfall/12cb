@@ -13,6 +13,9 @@ import { SetupComponent } from './setup/setup.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { MatCardModule } from '@angular/material/card';
     MatButtonModule,
     FormsModule,
     MatCardModule,
+    MatDividerModule,
+    MatToolbarModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
