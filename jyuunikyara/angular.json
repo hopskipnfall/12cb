@@ -57,6 +57,14 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "ja": {
+              "aot": true,
+              "outputPath": "dist/under-c-ja/",
+              "i18nFile": "src/locale/messages.ja.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "ja",
+              "i18nMissingTranslation": "ignore"
             }
           }
         },
@@ -68,6 +76,9 @@
           "configurations": {
             "production": {
               "browserTarget": "jyuunikyara:build:production"
+            },
+            "ja": {
+              "browserTarget": "jyuunikyara:build:ja"
             }
           }
         },

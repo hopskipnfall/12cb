@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="5e26106135adaec11524878afa43b0969f143e7f" datatype="html">
+        <source>12-Character Battle</source>
+        <target>１２キャラ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="722c62ca7de5695ca162ce1499caa644ba99c968" datatype="html">
+        <source>Player 1</source>
+        <target>Playaa 1</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/setup/setup.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8c54dc45cc8f94e5c781f5e147d3b3e8f9880152" datatype="html">
+        <source>Player 2</source>
+        <target>Playaa 2</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/setup/setup.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="48edf4013ed41df431c8ffeb8fb2b32f51f4adff" datatype="html">
+        <source>stock count</source>
+        <target>ストック</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/setup/setup.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8434d4a28744d7df82cd39ef8da4266fcbc40064" datatype="html">
+        <source>Start</source>
+        <target>スタートする</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/setup/setup.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

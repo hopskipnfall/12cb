@@ -4,10 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:ja": "ng serve --configuration=ja",
     "build": "ng build",
+    "build:ja": "ng build --configuration=ja",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "int:extract": "ng xi18n --output-path locale"
   },
   "private": true,
   "dependencies": {
