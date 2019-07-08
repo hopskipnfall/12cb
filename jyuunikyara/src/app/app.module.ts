@@ -16,6 +16,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { CharacterPickerComponent } from './character-picker/character-picker.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { MatDividerModule } from '@angular/material/divider';
     CharacterGridComponent,
     CharacterComponent,
     SetupComponent,
+    CharacterPickerComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,8 +40,12 @@ import { MatDividerModule } from '@angular/material/divider';
     MatDividerModule,
     MatToolbarModule,
     MatIconModule,
+    MatDialogModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    CharacterPickerComponent,
+  ]
 })
 export class AppModule { }
