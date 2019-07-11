@@ -15,4 +15,11 @@ export class CharacterComponent implements OnInit {
   ngOnInit() {
   }
 
+  range(size: number) {
+    const out = [];
+    for (let i = 0; i < size; i++) {
+      out.push(i);
+    }
+    return out;
+  }
 }

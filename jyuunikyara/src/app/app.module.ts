@@ -18,6 +18,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { CharacterPickerComponent } from './character-picker/character-picker.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ArenaComponent } from './arena/arena.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { BillboardComponent } from './billboard/billboard.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     CharacterComponent,
     SetupComponent,
     CharacterPickerComponent,
+    ArenaComponent,
+    BillboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +46,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatToolbarModule,
     MatIconModule,
     MatDialogModule,
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

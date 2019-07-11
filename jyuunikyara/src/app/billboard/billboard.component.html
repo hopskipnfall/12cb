@@ -1,0 +1,17 @@
+<mat-card class="message-box">
+  <mat-card-header>
+    <mat-card-title>Who won?</mat-card-title>
+  </mat-card-header>
+  <mat-card-content i18n>
+<mat-grid-list cols="2" rowHeight="1:1">
+  <div class="centered-overlay vs-overlay">vs</div>
+  <mat-grid-tile class="character-tile" 
+      [style.background-image]="'url(assets/icons/sekirei/' + player1Selected + '.png)'">
+      <!-- (click)="clickCharacter.emit(character)"> (click)="character.stocks = character.stocks > 0 ? character.stocks - 1 : 4" -->
+  </mat-grid-tile>
+  <mat-grid-tile class="character-tile" 
+      [style.background-image]="'url(assets/icons/sekirei/' + player2Selected + '.png)'">
+  </mat-grid-tile>
+</mat-grid-list>
+  </mat-card-content>
+</mat-card>

@@ -1,9 +1,6 @@
 .characterGrid
   display: flex
 
-.message-box
-  margin-bottom: 10px
-
 .player-card
   margin-left: 5px
   margin-right: 5px
@@ -18,9 +15,6 @@
 
   @media screen and (min-width: 1000px)
     width: 200px
-
-.wrapper
-  display: flex
 
 .character-tile
   background-size: contain
@@ -54,6 +48,48 @@
 
 .dead
   opacity: 0.25
+  filter: grayscale(100%)
 
 .dying
   opacity: 0.7
+
+.image-bg
+  height: 100%
+  background-size: contain
+  background-repeat: no-repeat
+  display: flex
+  flex-direction: column
+  flex-grow: 1
+
+$tile-bg: #929292;
+
+.selectable 
+  animation: 1.5s ease 0s pulse infinite
+  background: $tile-bg
+  border-radius: 6px
+  float: left
+
+// Loop from 1-9.
+@for $i from 1 through 12
+  .selectable 
+    
+    // :nth-child(1-9) 
+    &:nth-child(#{$i}) 
+      
+      // Delay the animation. Delay increases as items loop.
+      animation-delay: $i * (1s / 18)
+
+@keyframes pulse 
+  0% 
+    background: $tile-bg
+    transform: scale(1)
+
+  25% 
+    background: darken($tile-bg, 10%)
+    transform: scale(1.015)
+  
+  50% 
+    background: $tile-bg
+    transform: scale(1)
+  
+

@@ -1,15 +1,7 @@
-<!-- <mat-card class="message-box">
-  <mat-card-content i18n>
-    Choose your character!
-  </mat-card-content>
-</mat-card> -->
-
-<div class="wrapper">
-
 <mat-card class="player-card">
 
   <mat-card-header>
-    <mat-card-title>{{!player1 ? 'Player 1' : player1}}</mat-card-title>
+    <mat-card-title i18n="The player's name">{{playerName}}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <!-- <div *ngIf="locked" class="transparent-blocker"></div> -->
@@ -19,26 +11,15 @@
     </div> -->
 
     <mat-grid-list cols="2" rowHeight="1:1">
-      <mat-grid-tile *ngFor="let character of snapshot.player1.characters" [style.background-image]="'url(assets/icons/sekirei/' + character.name + '.png)'" class="character-tile" [ngClass]="{'dead': character.stocks == 0, 'dying': (character.stocks != 0 && character.stocks != 4)}" (click)="character.stocks = character.stocks > 0 ? character.stocks - 1 : 4"><app-character character="{{character.name}}" stocks="{{character.stocks}}"></app-character></mat-grid-tile>
+      <mat-grid-tile class="character-tile" 
+          *ngFor="let character of playerSnapshot.characters"
+          [ngClass]="{'dead': character.stocks == 0, 'dying': (character.stocks != 0 && character.stocks != 4), 'selected-char': character.name == selectedCharacter, 'selectable': selectMode && character.stocks != 0 && character.name != selectedCharacter}"
+          (click)="clickCharacter.emit(character)">
+          <div class="image-bg"
+              [style.background-image]="'url(assets/icons/sekirei/' + character.name + '.png)'">
+            <app-character character="{{character.name}}" stocks="{{character.stocks}}"></app-character>
+          </div>
+      </mat-grid-tile>
     </mat-grid-list>
   </mat-card-content>
 </mat-card>
-
-<mat-card class="player-card">
-  <!-- <div *ngIf="locked" class="transparent-blocker"></div>
-
-  <div class="button-overlay">
-    <button mat-flat-button color="primary" i18n (click)="launchPicker('player1')">Choose</button>
-  </div> -->
-
-  <mat-card-header>
-    <mat-card-title>{{!player2 ? 'Player 2' : player2}}</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-grid-list cols="2" rowHeight="1:1">
-      <mat-grid-tile *ngFor="let character of snapshot.player2.characters" [style.background-image]="'url(assets/icons/sekirei/' + character.name + '.png)'" class="character-tile" [ngClass]="{'dead': character.stocks == 0, 'dying': (character.stocks != 0 && character.stocks != 4)}" (click)="character.stocks = character.stocks > 0 ? character.stocks - 1 : 4"><app-character character="{{character.name}}" stocks="{{character.stocks}}"></app-character></mat-grid-tile>
-    </mat-grid-list>
-  </mat-card-content>
-</mat-card>
-
-</div>

@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { BattleService, GameSnapshot } from '../battle.service';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { BattleService, GameSnapshot, PlayerSnapshot } from '../battle.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CharacterPickerComponent } from '../character-picker/character-picker.component';
-
-const SELECTION = 'selection';
 
 @Component({
   selector: 'app-character-grid',
@@ -11,33 +9,24 @@ const SELECTION = 'selection';
   styleUrls: ['./character-grid.component.sass']
 })
 export class CharacterGridComponent implements OnInit {
-  player1: string;
-  player2: string;
-  snapshot: GameSnapshot;
+  @Output() clickCharacter: EventEmitter<any> = new EventEmitter();
+  @Input() playerSnapshot: PlayerSnapshot;
+  @Input() selectedCharacter: string;
+  @Input() playerName: string;
+  @Input() selectMode: boolean;
 
-  gameState = SELECTION;
+  player1: string;
 
   locked = false;
 
-  constructor(private battleService: BattleService, private matDialog: MatDialog) {}
+  constructor(private matDialog: MatDialog) {}
 
   ngOnInit() {
-    this.player1 = this.battleService.getPlayer1Name();
-    this.player2 = this.battleService.getPlayer2Name();
-
-    const chars = [
-      'luigi', 'mario', 'donkey_kong', 'link', 'samus', 'captain_falcon',
-       'ness', 'yoshi', 'kirby', 'fox', 'pikachu', 'jigglypuff'];
-
-    this.snapshot = {
-      player1: {characters: chars.map(char => ({name: char, stocks: 4}))},
-      player2: {characters: chars.map(char => ({name: char, stocks: 4}))},
-    };
   }
 
   launchPicker(player: string) {
     this.matDialog.open(CharacterPickerComponent, {
-      data: this.snapshot.player1,
+      data: this.playerSnapshot,
       width: '300px',
       // height: '530px', // 100%
       disableClose: true,
@@ -45,4 +34,8 @@ export class CharacterGridComponent implements OnInit {
       // panelClass: 'dialog-wrapper'
     });
   }
+  // click(character: string) {
+  //   console.log('aaaaaa');
+  //   this.clickCharacter.emit(character);
+  // }
 }

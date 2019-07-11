@@ -1,0 +1,64 @@
+<mat-card class="message-box">
+  <mat-card-header>
+    <mat-card-title>Who won?</mat-card-title>
+  </mat-card-header>
+  <mat-card-content i18n>
+
+    <mat-grid-list cols="2" rowHeight="1:1">
+      <div class="centered-overlay vs-overlay">vs</div>
+      <mat-grid-tile class="character-tile" 
+          [style.background-image]="player1Selected ? 'url(assets/icons/sekirei/' + player1Selected.name + '.png)' : ''"
+          [ngClass]="{'round-winner': roundWinner == 'player1', 'round-loser': roundWinner == 'player2'}"
+          (click)="playerCharClicked('player1')">
+          <!-- (click)="clickCharacter.emit(character)"> (click)="character.stocks = character.stocks > 0 ? character.stocks - 1 : 4" -->
+          <div style="margin-top: auto">
+            <span *ngFor="let stock of range(p1RemainingStocks)">💎</span>
+          </div>
+      </mat-grid-tile>
+      <mat-grid-tile class="character-tile" 
+      [style.background-image]="player2Selected ? 'url(assets/icons/sekirei/' + player2Selected.name + '.png)' : ''"
+          [ngClass]="{'round-winner': roundWinner == 'player2', 'round-loser': roundWinner == 'player1'}"
+          (click)="playerCharClicked('player2')">
+          <!-- (click)="clickCharacter.emit(character)"> (click)="character.stocks = character.stocks > 0 ? character.stocks - 1 : 4" -->
+          <div style="margin-top: auto">
+            <span *ngFor="let stock of range(p2RemainingStocks)">💎</span>
+          </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <div *ngIf="roundWinner">
+    <p>How many stocks were left?</p>
+    <mat-form-field placeholder="thingy">
+    <mat-chip-list>
+      <mat-chip
+          *ngFor="let r of range(4)"
+          [selected]="remainingStocksSelected == r + 1"
+          [disabled]="roundWinner == 'player1' ? player1Selected.stocks < r + 1 : player2Selected.stocks < r + 1"
+          (click)="remainingStocksSelected = r + 1">{{r + 1}}</mat-chip>
+    </mat-chip-list>
+    </mat-form-field>
+
+    <button mat-raised-button
+        color="primary"
+        [disabled]="remainingStocksSelected == 0"
+        (click)="submitRound()">Submit</button>
+    </div>
+    
+  </mat-card-content>
+</mat-card>
+
+<div class="wrapper">
+<app-character-grid
+    [playerName]="player1Name"
+    [selectedCharacter]="player1Selected"
+    [playerSnapshot]="snapshot.player1"
+    [selectMode]="p1SelectMode"
+    (clickCharacter)="characterClicked('player1', $event)"></app-character-grid>
+
+
+<app-character-grid
+    [playerName]="player2Name"
+    [selectedCharacter]="player2Selected"
+    [playerSnapshot]="snapshot.player2"
+    [selectMode]="p2SelectMode"
+    (clickCharacter)="characterClicked('player2', $event)"></app-character-grid>
+</div>
