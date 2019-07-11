@@ -9,6 +9,7 @@ export class CharacterComponent implements OnInit {
 
   @Input() character: string;
   @Input() stocks: number;
+  @Input() initialStockCount: number;
 
   constructor() { }
 

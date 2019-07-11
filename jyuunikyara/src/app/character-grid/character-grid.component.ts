@@ -14,6 +14,7 @@ export class CharacterGridComponent implements OnInit {
   @Input() selectedCharacter: string;
   @Input() playerName: string;
   @Input() selectMode: boolean;
+  @Input() initialStockCount: boolean;
 
   player1: string;
 

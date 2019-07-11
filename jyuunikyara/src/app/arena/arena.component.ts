@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BattleService, GameSnapshot, Character } from '../battle.service';
+import { Router } from '@angular/router';
 
 enum GameState {
   UNKNOWN = 0,
@@ -35,11 +36,18 @@ export class ArenaComponent implements OnInit {
 
   remainingStocksSelected = 0;
 
-  constructor(private battleService: BattleService) {}
+  initialStockCount = 0;
+
+  constructor(private battleService: BattleService, private router: Router) {}
 
   ngOnInit() {
     this.player1Name = this.battleService.getPlayer1Name();
     this.player2Name = this.battleService.getPlayer2Name();
+    this.initialStockCount = this.battleService.getInitialStockCount();
+
+    if (!this.player1Name || !this.player2Name) {
+      this.router.navigate(['/new']);
+    }
     // this.battleService.recordRound({player1Character: 'link', player2Character: 'fox', winner: 'player1', remainingStocks: 2});
     // this.battleService.recordRound({player1Character: 'link', player2Character: 'pikachu', winner: 'player1', remainingStocks: 1});
     // this.battleService.recordRound({player1Character: 'link', player2Character: 'jigglypuff', winner: 'player1', remainingStocks: 1});
@@ -56,9 +64,11 @@ export class ArenaComponent implements OnInit {
     if (player === 'player1' && this.p1SelectMode) {
       this.player1Selected = event;
       this.p1SelectMode = false;
+      this.p1RemainingStocks = event.stocks;
     } else if (player === 'player2' && this.p2SelectMode) {
       this.player2Selected = event;
       this.p2SelectMode = false;
+      this.p2RemainingStocks = event.stocks;
     }
   }
 

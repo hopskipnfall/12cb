@@ -13,11 +13,11 @@
     <mat-grid-list cols="2" rowHeight="1:1">
       <mat-grid-tile class="character-tile" 
           *ngFor="let character of playerSnapshot.characters"
-          [ngClass]="{'dead': character.stocks == 0, 'dying': (character.stocks != 0 && character.stocks != 4), 'selected-char': character.name == selectedCharacter, 'selectable': selectMode && character.stocks != 0 && character.name != selectedCharacter}"
+          [ngClass]="{'dead': character.stocks == 0, 'dying': (character.stocks != 0 && character.stocks != initialStockCount), 'selected-char': character.name == selectedCharacter, 'selectable': selectMode && character.stocks != 0 && character.name != selectedCharacter}"
           (click)="clickCharacter.emit(character)">
           <div class="image-bg"
               [style.background-image]="'url(assets/icons/sekirei/' + character.name + '.png)'">
-            <app-character character="{{character.name}}" stocks="{{character.stocks}}"></app-character>
+            <app-character character="{{character.name}}" stocks="{{character.stocks}}" [initialStockCount]="initialStockCount"></app-character>
           </div>
       </mat-grid-tile>
     </mat-grid-list>

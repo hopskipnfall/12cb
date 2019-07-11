@@ -31,7 +31,7 @@ export const CHARS = ['luigi', 'mario', 'donkey_kong', 'link', 'samus',
 export class BattleService {
   private player1: string;
   private player2: string;
-  private initialStockCount: number = 4;
+  private initialStockCount: number;
 
   private history: Round[] = [];
 
@@ -54,6 +54,10 @@ export class BattleService {
 
   recordRound(round: Round) {
     this.history.push(round);
+  }
+
+  getInitialStockCount() {
+    return this.initialStockCount;
   }
 
   getSnapshot(): GameSnapshot {

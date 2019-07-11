@@ -30,7 +30,7 @@
     <mat-form-field placeholder="thingy">
     <mat-chip-list>
       <mat-chip
-          *ngFor="let r of range(4)"
+          *ngFor="let r of range(initialStockCount)"
           [selected]="remainingStocksSelected == r + 1"
           [disabled]="roundWinner == 'player1' ? player1Selected.stocks < r + 1 : player2Selected.stocks < r + 1"
           (click)="remainingStocksSelected = r + 1">{{r + 1}}</mat-chip>
@@ -52,7 +52,8 @@
     [selectedCharacter]="player1Selected"
     [playerSnapshot]="snapshot.player1"
     [selectMode]="p1SelectMode"
-    (clickCharacter)="characterClicked('player1', $event)"></app-character-grid>
+    (clickCharacter)="characterClicked('player1', $event)"
+    [initialStockCount]="initialStockCount"></app-character-grid>
 
 
 <app-character-grid
@@ -60,5 +61,6 @@
     [selectedCharacter]="player2Selected"
     [playerSnapshot]="snapshot.player2"
     [selectMode]="p2SelectMode"
-    (clickCharacter)="characterClicked('player2', $event)"></app-character-grid>
+    (clickCharacter)="characterClicked('player2', $event)"
+    [initialStockCount]="initialStockCount"></app-character-grid>
 </div>
