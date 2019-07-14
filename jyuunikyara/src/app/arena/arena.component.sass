@@ -9,6 +9,7 @@
   background-repeat: no-repeat
   background-size: 90%
   background-position: center
+  transform: scale(0.95)
 
 .centered-overlay
   position: absolute
@@ -27,10 +28,47 @@
   font-size: 35px
   pointer-events: none
 
+$tile-bg: #929292;
+
 .round-winner
-  background-color: #929292
+  background-color: $tile-bg
   border-radius: 10px
+
+  animation: 0.5s ease 0s bulge
+  float: left
+  transform: scale(0.95)
 
 .round-loser
   opacity: 0.25
   border-radius: 10px
+
+@keyframes bulge 
+
+  0% 
+    background-color: darken($tile-bg, 5%)
+    transform: scale(0.99)
+
+  // 80% 
+  //   // background: $tile-bg
+  //   transform: scale(0.98)
+  //   background-color: $tile-bg
+
+  100% 
+    // background: $tile-bg
+    transform: scale(0.95)
+    background-color: $tile-bg
+
+  // 0% 
+  //   // background: $tile-bg
+  //   transform: scale(0.95)
+  //   background: $tile-bg
+
+.char-background
+  margin-top: auto
+  display: flex
+  flex-grow: 1
+  background-size: contain
+  background-repeat: no-repeat
+  background-size: 90%
+  background-position: center
+  height: 100%

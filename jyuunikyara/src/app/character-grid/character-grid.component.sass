@@ -61,13 +61,14 @@
   flex-direction: column
   flex-grow: 1
 
-$tile-bg: #929292;
+$tile-bg: #616060//#929292;
 
 .selectable 
-  animation: 1.5s ease 0s pulse infinite
+  animation: 5s ease 2s pulse infinite
   background: $tile-bg
   border-radius: 6px
   float: left
+  transform: scale(0.95)
 
 // Loop from 1-9.
 @for $i from 1 through 12
@@ -80,16 +81,19 @@ $tile-bg: #929292;
       animation-delay: $i * (1s / 18)
 
 @keyframes pulse 
-  0% 
-    background: $tile-bg
-    transform: scale(1)
+  6% 
+    // background: $tile-bg
+    transform: scale(0.95)
 
-  25% 
-    background: darken($tile-bg, 10%)
-    transform: scale(1.015)
+  9% 
+    background: darken($tile-bg, 5%)
+    transform: scale(0.99)
   
-  50% 
+  12% 
+    // background: $tile-bg
+    transform: scale(0.95)
+
+  15%
     background: $tile-bg
-    transform: scale(1)
   
 

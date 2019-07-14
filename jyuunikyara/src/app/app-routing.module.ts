@@ -7,7 +7,7 @@ import { ArenaComponent } from './arena/arena.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/new',
+    redirectTo: '/battle',
     pathMatch: 'full'
   },
   {

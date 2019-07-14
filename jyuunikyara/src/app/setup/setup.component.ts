@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 })
 export class SetupComponent implements OnInit {
   stockCount = 4;
-  player1Name: string;
-  player2Name: string;
+  player1Name: string = 'Player 1';
+  player2Name: string = 'Player 2';
 
   constructor(private battleService: BattleService, private router: Router) { }
 

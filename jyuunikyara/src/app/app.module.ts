@@ -20,7 +20,6 @@ import { CharacterPickerComponent } from './character-picker/character-picker.co
 import { MatDialogModule } from '@angular/material/dialog';
 import { ArenaComponent } from './arena/arena.component';
 import { MatChipsModule } from '@angular/material/chips';
-import { BillboardComponent } from './billboard/billboard.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,6 @@ import { BillboardComponent } from './billboard/billboard.component';
     SetupComponent,
     CharacterPickerComponent,
     ArenaComponent,
-    BillboardComponent,
   ],
   imports: [
     BrowserModule,

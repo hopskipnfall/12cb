@@ -4,8 +4,25 @@ import { Router } from '@angular/router';
 
 enum GameState {
   UNKNOWN = 0,
-  CHARACTER_SELECT = 1,
+  INITIAL_CHARACTER_SELECT = 1,
   FIGHTING = 2,
+}
+
+// export type PlayerRound {
+
+// }
+
+export interface RoundReplay {
+  player1: {
+    character: string;
+    showImage: boolean;
+    stocks: number;
+  };
+  player2: {
+    character: string;
+    showImage: boolean;
+    stocks: number;
+  };
 }
 
 @Component({
@@ -16,7 +33,7 @@ enum GameState {
 export class ArenaComponent implements OnInit {
   // @Input() chooseYourCharacterString: string;
 
-  gameState: GameState = GameState.CHARACTER_SELECT;
+  gameState: GameState = GameState.INITIAL_CHARACTER_SELECT;
 
   player1Selected: Character;
   player2Selected: Character;
@@ -38,6 +55,10 @@ export class ArenaComponent implements OnInit {
 
   initialStockCount = 0;
 
+  gameOver = false;
+
+  initialCharSelect = true;
+
   constructor(private battleService: BattleService, private router: Router) {}
 
   ngOnInit() {
@@ -45,14 +66,30 @@ export class ArenaComponent implements OnInit {
     this.player2Name = this.battleService.getPlayer2Name();
     this.initialStockCount = this.battleService.getInitialStockCount();
 
-    if (!this.player1Name || !this.player2Name) {
-      this.router.navigate(['/new']);
-    }
-    // this.battleService.recordRound({player1Character: 'link', player2Character: 'fox', winner: 'player1', remainingStocks: 2});
-    // this.battleService.recordRound({player1Character: 'link', player2Character: 'pikachu', winner: 'player1', remainingStocks: 1});
-    // this.battleService.recordRound({player1Character: 'link', player2Character: 'jigglypuff', winner: 'player1', remainingStocks: 1});
-    // this.battleService.recordRound({player1Character: 'link', player2Character: 'ness', winner: 'player1', remainingStocks: 1});
-    // this.battleService.recordRound({player1Character: 'link', player2Character: 'kirby', winner: 'player1', remainingStocks: 1});
+    // if (!this.player1Name || !this.player2Name) {
+    //   this.router.navigate(['/new']);
+    // }
+    this.battleService.recordRound({player1Character: 'link', player2Character: 'fox', winner: 'player1', remainingStocks: 2});
+    this.battleService.recordRound({player1Character: 'link', player2Character: 'pikachu', winner: 'player1', remainingStocks: 1});
+    this.battleService.recordRound({player1Character: 'link', player2Character: 'jigglypuff', winner: 'player1', remainingStocks: 1});
+    this.battleService.recordRound({player1Character: 'link', player2Character: 'ness', winner: 'player1', remainingStocks: 1});
+    this.battleService.recordRound({player1Character: 'link', player2Character: 'kirby', winner: 'player2', remainingStocks: 2});
+    this.battleService.recordRound({player1Character: 'ness', player2Character: 'kirby', winner: 'player1', remainingStocks: 4});
+    this.battleService.recordRound({player1Character: 'ness', player2Character: 'yoshi', winner: 'player1', remainingStocks: 2});
+    this.battleService.recordRound({player1Character: 'ness', player2Character: 'mario', winner: 'player2', remainingStocks: 3});
+    this.battleService.recordRound({player1Character: 'luigi', player2Character: 'mario', winner: 'player2', remainingStocks: 1});
+    this.battleService.recordRound({player1Character: 'captain_falcon', player2Character: 'mario', winner: 'player1', remainingStocks: 3});
+    this.battleService.recordRound({player1Character: 'captain_falcon', player2Character: 'donkey_kong', winner: 'player1', remainingStocks: 3});
+    this.battleService.recordRound({player1Character: 'captain_falcon', player2Character: 'luigi', winner: 'player1', remainingStocks: 3});
+    this.battleService.recordRound({player1Character: 'captain_falcon', player2Character: 'samus', winner: 'player1', remainingStocks: 3});
+    this.battleService.recordRound({player1Character: 'captain_falcon', player2Character: 'link', winner: 'player1', remainingStocks: 3});
+    this.battleService.recordRound({player1Character: 'captain_falcon', player2Character: 'luigi', winner: 'player1', remainingStocks: 3});
+    this.player2Selected = {name: 'captain_falcon', stocks: 4};
+    this.remainingStocksSelected = 3;
+    this.player1Selected = {name: 'captain_falcon', stocks: 3};
+    this.roundWinner = 'player1';
+    this.initialCharSelect = false;
+    this.submitRound();
     this.snapshot = this.battleService.getSnapshot();
   }
 
@@ -75,6 +112,7 @@ export class ArenaComponent implements OnInit {
   playerCharClicked(player: string) {
     if (this.player1Selected && this.player2Selected) {
       this.roundWinner = player;
+      this.initialCharSelect = false;
     }
   }
 
@@ -93,7 +131,6 @@ export class ArenaComponent implements OnInit {
       player2Character: this.player2Selected.name,
       remainingStocks: this.remainingStocksSelected,
     };
-    console.log(thing);
     this.battleService.recordRound(thing);
     this.snapshot = this.battleService.getSnapshot();
     if (this.roundWinner === 'player1') {
@@ -109,5 +146,10 @@ export class ArenaComponent implements OnInit {
     }
     this.remainingStocksSelected = 0;
     this.roundWinner = null;
+    this.gameOver = this.battleService.isGameOver();
+  }
+
+  getHistory() {
+    return this.battleService.getHistory();
   }
 }
