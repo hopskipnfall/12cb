@@ -20,6 +20,7 @@ import { CharacterPickerComponent } from './character-picker/character-picker.co
 import { MatDialogModule } from '@angular/material/dialog';
 import { ArenaComponent } from './arena/arena.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatIconModule,
     MatDialogModule,
     MatChipsModule,
+    MatRippleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

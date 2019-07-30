@@ -1,4 +1,4 @@
-<mat-card class="message-box" *ngIf="player1Selected && player2Selected && !gameOver">
+<mat-card class="message-box" *ngIf="!initialCharSelect && !gameOver">
   <mat-card-header>
     <mat-card-title>Who won?</mat-card-title>
   </mat-card-header>
@@ -7,6 +7,7 @@
     <mat-grid-list cols="2" rowHeight="1:1">
       <div class="centered-overlay vs-overlay">vs</div>
       <mat-grid-tile class="character-tile"
+          matRipple
           [ngClass]="{'round-winner': roundWinner == 'player1', 'round-loser': roundWinner == 'player2'}"
           (click)="playerCharClicked('player1')">
           <div class="char-background"
@@ -14,7 +15,8 @@
             <span *ngFor="let stock of range(p1RemainingStocks)">💎</span>
           </div>
       </mat-grid-tile>
-      <mat-grid-tile class="character-tile" 
+      <mat-grid-tile class="character-tile"
+          matRipple
           [ngClass]="{'round-winner': roundWinner == 'player2', 'round-loser': roundWinner == 'player1'}"
           (click)="playerCharClicked('player2')">
           <div class="char-background"
@@ -30,8 +32,8 @@
       <mat-chip
           *ngFor="let r of range(initialStockCount)"
           [selected]="remainingStocksSelected == r + 1"
-          [disabled]="roundWinner == 'player1' ? player1Selected.stocks < r + 1 : player2Selected.stocks < r + 1"
-          (click)="remainingStocksSelected = r + 1">{{r + 1}}</mat-chip>
+          [disabled]="(roundWinner == 'player1') ? (p1RemainingStocks < r + 1) : (p2RemainingStocks < r + 1)"
+          (click)="maybeSetRemainingStocks(!(roundWinner == 'player1' ? (p1RemainingStocks < r + 1) : (p2RemainingStocks < r + 1)), r+1)">{{r + 1}}</mat-chip>
     </mat-chip-list>
     </mat-form-field>
 
@@ -68,27 +70,46 @@
     [initialStockCount]="initialStockCount"></app-character-grid>
 </div>
 
+<br>
+
 <mat-card class="message-box" *ngIf="gameOver">
 <mat-card-header>
   <mat-card-title>Replay</mat-card-title>
 </mat-card-header>
 <mat-card-content>
 
-<mat-grid-list cols="1" rowHeight="2:1">
+<mat-grid-list cols="2" rowHeight="2:1">
+  <ng-container *ngFor="let round of getHistory(); let i = index">
+    <mat-grid-tile>
+        <div class="char-background-slice" 
+            [ngClass]="{'faded-bg': (i != 0 && round.player2Character != getHistory()[i-1].player2Character)}"
+            [style.background-image]="'url(assets/icons/sekirei/' + round.player1Character + '.png)'"></div>
+        <div style="margin-top: auto; margin-bottom: auto" *ngIf="!(i == 0 || round.player1Character != getHistory()[i-1].player1Character)">
+          <span *ngFor="let stock of range(getHistory()[i-1].remainingStocks)">💎</span>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="char-background-slice" 
+          [ngClass]="{'faded-bg': (i != 0 && round.player1Character != getHistory()[i-1].player1Character)}"
+          [style.background-image]="'url(assets/icons/sekirei/' + round.player2Character + '.png)'"></div>
+        <div style="margin-top: auto; margin-bottom: auto" *ngIf="!(i == 0 || round.player2Character != getHistory()[i-1].player2Character)">
+          <span *ngFor="let stock of range(getHistory()[i-1].remainingStocks)">💎</span>
+        </div>
+    </mat-grid-tile>
+  </ng-container>
+
+  <mat-grid-tile 
+      class="char-background-slice">
+      <div style="margin-top: auto; margin-bottom: auto" *ngIf="getHistory()[getHistory().length-1].winner == 'player1'">
+        <span *ngFor="let stock of range(getHistory()[getHistory().length-1].remainingStocks)">💎</span>
+      </div>
+  </mat-grid-tile>
   <mat-grid-tile
-      *ngFor="let round of getHistory(); let i = index">
-      {{round.player1Character}}
-    <!-- <mat-grid-list cols="2">
-      <mat-grid-tile>
-        {{round.player1Character}}
-      </mat-grid-tile>
-      <mat-grid-tile>
-        {{round.player2Character}}
-      </mat-grid-tile>
-    </mat-grid-list> -->
-
-
-  </mat-grid-tile> 
+      class="char-background-slice">
+      <div style="margin-top: auto; margin-bottom: auto" *ngIf="getHistory()[getHistory().length-1].winner == 'player2'">
+        <span *ngFor="let stock of range(getHistory()[getHistory().length-1].remainingStocks)">💎</span>
+      </div>
+  </mat-grid-tile>
 </mat-grid-list>
 
 </mat-card-content>

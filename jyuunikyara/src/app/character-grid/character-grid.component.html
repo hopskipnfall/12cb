@@ -10,14 +10,16 @@
   <mat-card-content>
 
     <div class="button-overlay" *ngIf="readyToFight">
-      Ready to Fight
+      <span class="ready-to-fight">Ready to Fight</span>
       <!-- <button mat-flat-button color="primary" i18n (click)="launchPicker('player1')">Choose</button> -->
     </div>
 
-    <div *ngIf="readyToFight" class="transparent-blocker"></div>
+    <!-- <div *ngIf="readyToFight" class="transparent-blocker"></div> -->
 
     <mat-grid-list cols="2" rowHeight="1:1">
       <mat-grid-tile class="character-tile" 
+          matRipple
+          [matRippleDisabled]="!(selectMode && character.stocks != 0)"
           *ngFor="let character of playerSnapshot.characters"
           [ngClass]="{'dead': character.stocks == 0, 'dying': (character.stocks != 0 && character.stocks != initialStockCount), 'selected-char': character.name == selectedCharacter, 'selectable': selectMode && character.stocks != 0 && character.name != selectedCharacter}"
           (click)="clickCharacter.emit(character)">

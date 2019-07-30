@@ -1,3 +1,6 @@
+
+$tile-bg: #929292;
+  
 .message-box
   margin-bottom: 10px
 
@@ -9,6 +12,10 @@
   background-repeat: no-repeat
   background-size: 90%
   background-position: center
+  transform: scale(0.95)
+  background: #656565
+  border-radius: 12px
+  float: left
   transform: scale(0.95)
 
 .centered-overlay
@@ -28,7 +35,6 @@
   font-size: 35px
   pointer-events: none
 
-$tile-bg: #929292;
 
 .round-winner
   background-color: $tile-bg
@@ -72,3 +78,26 @@ $tile-bg: #929292;
   background-size: 90%
   background-position: center
   height: 100%
+
+.char-background-slice
+  margin-top: auto
+  display: flex
+  flex-grow: 1
+  background-size: contain
+  background-repeat: no-repeat
+  background-size: 90%
+  background-position: center
+
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+
+.faded-bg
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  opacity: 0.2

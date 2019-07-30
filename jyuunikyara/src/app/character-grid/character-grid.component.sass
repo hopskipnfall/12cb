@@ -32,6 +32,15 @@
   justify-content: center
   display: flex
   z-index: 10
+  background-color: #616060
+  border-radius: 10px
+
+.ready-to-fight
+  width: 100%
+  text-align: center
+  vertical-align: middle
+  font-weight: bold
+  font-size: 30pt
 
 .transparent-blocker
   position: absolute
@@ -64,7 +73,7 @@
 $tile-bg: #616060//#929292;
 
 .selectable 
-  animation: 5s ease 2s pulse infinite
+  animation: 4s ease 2s pulse infinite
   background: $tile-bg
   border-radius: 6px
   float: left
@@ -81,12 +90,16 @@ $tile-bg: #616060//#929292;
       animation-delay: $i * (1s / 18)
 
 @keyframes pulse 
+  3% 
+    // background: $tile-bg
+    transform: scale(0.92)
+
   6% 
     // background: $tile-bg
     transform: scale(0.95)
 
   9% 
-    background: darken($tile-bg, 5%)
+    background: darken($tile-bg, 9%)
     transform: scale(0.99)
   
   12% 
