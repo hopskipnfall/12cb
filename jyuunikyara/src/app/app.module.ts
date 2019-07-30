@@ -23,6 +23,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatRippleModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSelectModule,
     MatSidenavModule,
   ],
-  providers: [],
+  providers: [
+    CookieService,
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     CharacterPickerComponent,

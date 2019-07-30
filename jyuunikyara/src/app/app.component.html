@@ -13,7 +13,7 @@
       class="sidenav-content">
       <mat-form-field>
           <mat-label i18n="Label for a language dropdown">Language</mat-label>
-          <mat-select [value]="selectedLanguage">
+          <mat-select [(value)]="selectedLanguage" (selectionChange)="changeLocale($event)">
             <mat-option *ngFor="let language of LANGUAGES" [value]="language.code">
               {{language.display}}
             </mat-option>
