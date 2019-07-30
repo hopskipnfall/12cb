@@ -1,6 +1,6 @@
 <mat-card class="message-box" *ngIf="!initialCharSelect && !gameOver">
   <mat-card-header>
-    <mat-card-title>Who won?</mat-card-title>
+    <mat-card-title i18n="Prompt asking who won the round">Who won?</mat-card-title>
   </mat-card-header>
   <mat-card-content>
 
@@ -8,7 +8,7 @@
       <div class="centered-overlay vs-overlay">vs</div>
       <mat-grid-tile class="character-tile"
           matRipple
-          [ngClass]="{'round-winner': roundWinner == 'player1', 'round-loser': roundWinner == 'player2'}"
+          [ngClass]="{'round-winner': roundWinner == 'player1', 'round-loser': roundWinner == 'player2', 'selectable': (player1Selected && player2Selected)}"
           (click)="playerCharClicked('player1')">
           <div class="char-background"
               [style.background-image]="player1Selected ? 'url(assets/icons/sekirei/' + player1Selected.name + '.png)' : ''">
@@ -17,7 +17,7 @@
       </mat-grid-tile>
       <mat-grid-tile class="character-tile"
           matRipple
-          [ngClass]="{'round-winner': roundWinner == 'player2', 'round-loser': roundWinner == 'player1'}"
+          [ngClass]="{'round-winner': roundWinner == 'player2', 'round-loser': roundWinner == 'player1', 'selectable': (player1Selected && player2Selected)}"
           (click)="playerCharClicked('player2')">
           <div class="char-background"
               [style.background-image]="player2Selected ? 'url(assets/icons/sekirei/' + player2Selected.name + '.png)' : ''">
@@ -26,21 +26,18 @@
       </mat-grid-tile>
     </mat-grid-list>
     <div *ngIf="roundWinner">
-    <p>How many stocks were left?</p>
-    <mat-form-field placeholder="thingy">
-    <mat-chip-list>
-      <mat-chip
-          *ngFor="let r of range(initialStockCount)"
-          [selected]="remainingStocksSelected == r + 1"
-          [disabled]="(roundWinner == 'player1') ? (p1RemainingStocks < r + 1) : (p2RemainingStocks < r + 1)"
-          (click)="maybeSetRemainingStocks(!(roundWinner == 'player1' ? (p1RemainingStocks < r + 1) : (p2RemainingStocks < r + 1)), r+1)">{{r + 1}}</mat-chip>
-    </mat-chip-list>
-    </mat-form-field>
+    <p i18n style="font-size: 13pt">How many stocks remaining?</p>
 
-    <button mat-raised-button
+    <div>
+    <button mat-stroked-button
+        class="button-row"
         color="primary"
-        [disabled]="remainingStocksSelected == 0"
-        (click)="submitRound()">Submit</button>
+        *ngFor="let r of range(initialStockCount)"
+        [disabled]="(roundWinner == 'player1') ? (p1RemainingStocks < r + 1) : (p2RemainingStocks < r + 1)"
+        (click)="maybeSetRemainingStocks(!(roundWinner == 'player1' ? (p1RemainingStocks < r + 1) : (p2RemainingStocks < r + 1)), r+1); submitRound()">
+      {{r + 1}}
+    </button>
+    </div>
     </div>
     
   </mat-card-content>
@@ -74,7 +71,7 @@
 
 <mat-card class="message-box" *ngIf="gameOver">
 <mat-card-header>
-  <mat-card-title>Replay</mat-card-title>
+  <mat-card-title i18n="Heading for a battle replay">Replay</mat-card-title>
 </mat-card-header>
 <mat-card-content>
 

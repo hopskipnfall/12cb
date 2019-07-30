@@ -21,6 +21,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ArenaComponent } from './arena/arena.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatRippleModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { MatRippleModule } from '@angular/material/core';
     MatDialogModule,
     MatChipsModule,
     MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
