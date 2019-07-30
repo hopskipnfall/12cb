@@ -5,18 +5,22 @@ import { SetupComponent } from './setup/setup.component';
 import { ArenaComponent } from './arena/arena.component';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   redirectTo: '/battle',
+  //   pathMatch: 'full'
+  // },
+  // {
+  //   path: 'new',
+  //   component: SetupComponent,
+  // },
   {
     path: '',
-    redirectTo: '/battle',
-    pathMatch: 'full'
-  },
-  {
-    path: 'new',
-    component: SetupComponent,
-  },
-  {
-    path: 'battle',
     component: ArenaComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '',
   },
 ];
 

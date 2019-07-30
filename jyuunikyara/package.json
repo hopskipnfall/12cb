@@ -4,14 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:ja": "ng serve --configuration=ja",
+    "start:ja": "ng serve --configuration=ja --base-href=\"/12cb/\"",
     "build": "ng build",
-    "build:ja": "ng build --configuration=ja",
+    "build:ja": "ng build --configuration=ja --base-href=\"/12cb/\"",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "int:extract": "ng xi18n --output-path locale",
-    "buildprod": "ng build --prod --base-href=\"/12cb/\""
+    "buildprod": "ng build --prod --base-href=\"/12cb/\" --configuration=production; ng build --prod --base-href=\"/12cb/\" --configuration=ja"
   },
   "private": true,
   "dependencies": {

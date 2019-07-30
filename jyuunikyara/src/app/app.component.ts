@@ -11,7 +11,7 @@ import { MatSelectChange } from '@angular/material/select';
 export class AppComponent {
   title = 'jyuunikyara';
 
-  readonly LANGUAGE_COOKIE_NAME = 'cookie_override';
+  readonly LANGUAGE_COOKIE_NAME = 'language_override';
 
   readonly LANGUAGES = [
     {code: 'en', display: 'English'},
@@ -35,8 +35,8 @@ export class AppComponent {
   }
 
   changeLocale(event: MatSelectChange) {
-    this.cookieService.set(this.LANGUAGE_COOKIE_NAME, this.selectedLanguage);
+    this.cookieService.set(this.LANGUAGE_COOKIE_NAME, this.selectedLanguage, null, '/');
     console.log('new value is', this.cookieService.get(this.LANGUAGE_COOKIE_NAME));
-    window.location.reload();
+    // window.location.reload();
   }
 }
