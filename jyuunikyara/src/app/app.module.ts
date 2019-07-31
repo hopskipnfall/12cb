@@ -24,6 +24,9 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CookieService } from 'ngx-cookie-service';
+import { WinscreenComponent } from './winscreen/winscreen.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,7 @@ import { CookieService } from 'ngx-cookie-service';
     SetupComponent,
     CharacterPickerComponent,
     ArenaComponent,
+    WinscreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +56,8 @@ import { CookieService } from 'ngx-cookie-service';
     MatRippleModule,
     MatSelectModule,
     MatSidenavModule,
+    MatTooltipModule,
+    MatSnackBarModule,
   ],
   providers: [
     CookieService,

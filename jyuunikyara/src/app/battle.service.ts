@@ -40,6 +40,14 @@ export class BattleService {
     this.player2 = player2;
   }
 
+  setPlayer1Name(name: string) {
+    this.player1 = name;
+  }
+
+  setPlayer2Name(name: string) {
+    this.player2 = name;
+  }
+
   setInitialStockCount(count: number) {
     this.initialStockCount = count;
   }
@@ -88,5 +96,12 @@ export class BattleService {
     const player2Alive =  snapshot.player2.characters.find(c => c.stocks > 0);
 
     return !(player1Alive && player2Alive);
+  }
+
+  clear() {
+    this.player1 = '';
+    this.player2 = '';
+    this.initialStockCount = 4;
+    this.history = [];
   }
 }

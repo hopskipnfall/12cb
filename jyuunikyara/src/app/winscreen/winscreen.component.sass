@@ -1,0 +1,124 @@
+$tile-bg: #929292;
+
+.bigwrapper
+    align-items: center
+    display: flex
+    flex-direction: column
+
+.wrapper
+  display: flex
+
+.message-box
+  margin-bottom: 10px
+  width: 300px
+
+.centered-overlay
+  position: absolute
+  margin-left: auto
+  margin-right: auto
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  align-items: center
+  justify-content: center
+  display: flex
+  z-index: 10
+
+.vs-overlay
+  font-size: 35px
+  pointer-events: none
+
+.character-tile
+  background-size: contain
+  background-repeat: no-repeat
+  background-size: 90%
+  background-position: center
+  transform: scale(0.95)
+  border-radius: 12px
+  float: left
+
+.char-background
+  margin-top: auto
+  display: flex
+  flex-grow: 1
+  background-size: contain
+  background-repeat: no-repeat
+  background-size: 90%
+  background-position: center
+  height: 100%
+
+.char-background-slice
+  margin-top: auto
+  display: flex
+  flex-grow: 1
+  background-size: contain
+  background-repeat: no-repeat
+  background-size: 90%
+  background-position: center
+
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+
+.faded-bg
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  opacity: 0.2
+
+.vs-overlay
+  font-size: 35px
+  pointer-events: none
+
+.round-winner
+  background-color: $tile-bg
+  border-radius: 10px
+
+  animation: 0.5s ease 0s bulge
+  float: left
+  transform: scale(0.95)
+
+.round-loser
+  opacity: 0.25
+  border-radius: 10px
+
+.button
+  // margin-right: 8px
+  // margin-top: 8px
+  // // height: 60px
+  // font-size: 10pt
+  // margin-bottom: 8px
+
+.link
+  display: flex
+  width: 200px
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+  padding: 8px
+  margin-top: auto
+  margin-bottom: auto
+  // overflow: hidden
+  // background-color: #f9f9f9
+  // width: 100%
+
+.flex-row
+  margin-top: 8px
+  display: flex
+  flex-direction: row
+
+.shorter
+  // height: 100px
+
+.my-button
+  margin-top: auto
+  margin-bottom: auto
+  margin-right: 8px
+
+.winner
+  font-size: 20pt

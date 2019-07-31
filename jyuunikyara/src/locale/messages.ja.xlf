@@ -19,30 +19,6 @@
         </context-group>
         <note priority="1" from="description">Page footer</note>
       </trans-unit>
-      <trans-unit id="722c62ca7de5695ca162ce1499caa644ba99c968" datatype="html">
-        <source>Player 1</source>
-        <target>プレイヤー１</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/setup/setup.component.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/arena/arena.component.html</context>
-          <context context-type="linenumber">50</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8c54dc45cc8f94e5c781f5e147d3b3e8f9880152" datatype="html">
-        <source>Player 2</source>
-        <target>プレイヤー２</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/setup/setup.component.html</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/arena/arena.component.html</context>
-          <context context-type="linenumber">61</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="fe46ccaae902ce974e2441abe752399288298619" datatype="html">
         <source>Language</source>
         <target>言語</target>
@@ -111,6 +87,84 @@
           <context context-type="linenumber">13</context>
         </context-group>
         <note priority="1" from="description">Banner indicating the player is ready to fight</note>
+      </trans-unit>
+      <trans-unit id="722c62ca7de5695ca162ce1499caa644ba99c968" datatype="html">
+        <source>Player 1</source>
+        <target>プレイヤー１</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/winscreen/winscreen.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/winscreen/winscreen.component.html</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/setup/setup.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/arena/arena.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+        <note priority="1" from="description">Player 1 default text</note>
+      </trans-unit>
+      <trans-unit id="8c54dc45cc8f94e5c781f5e147d3b3e8f9880152" datatype="html">
+        <source>Player 2</source>
+        <target>プレイヤー２</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/winscreen/winscreen.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/winscreen/winscreen.component.html</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/setup/setup.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/arena/arena.component.html</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+        <note priority="1" from="description">Player 2 default text</note>
+      </trans-unit>
+      <trans-unit id="29751e002b187a2728cc372fcd9751ee9d162624" datatype="html">
+        <source>Link copied to clipboard.</source>
+        <target>クリップボードにコピーしました。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/winscreen/winscreen.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">Link copied to clipboard notice</note>
+      </trans-unit>
+      <trans-unit id="3f6e0000ce21b8ddaff9348dc0edc20569ff0eb6" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{winnerName}}"/> wins!</source>
+        <target>勝者は<x id="INTERPOLATION" equiv-text="{{winnerName}}"/>選手！</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/winscreen/winscreen.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description">Announcement of winning user</note>
+      </trans-unit>
+      <trans-unit id="904c241f75ddec1e3c32ecff8af96d216a8cbb27" datatype="html">
+        <source>Copy link</source>
+        <target>クリップボードにコピー</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/winscreen/winscreen.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <note priority="1" from="description">Button text for a copy link button</note>
+      </trans-unit>
+      <trans-unit id="29148503e947c87d08d1ba9b988d2d84f74d1b8c" datatype="html">
+        <source>New 12cb!</source>
+        <target>１２キャラを始める！</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Tooltip to start a new 12cb</note>
       </trans-unit>
     </body>
   </file>

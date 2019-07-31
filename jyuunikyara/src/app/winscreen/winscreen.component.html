@@ -1,0 +1,121 @@
+<button style="display: none" #player1Default i18n="Player 1 default text">Player 1</button>
+<button style="display: none" #player2Default i18n="Player 2 default text">Player 2</button>
+<button style="display: none" #copiedToClipboard i18n="Link copied to clipboard notice">Link copied to clipboard.</button>
+
+<div class="bigwrapper">
+<mat-card class="message-box">
+  <mat-card-header>
+    <mat-card-title><span class="winner" i18n="Announcement of winning user">{{winnerName}} wins!</span></mat-card-title> 
+  </mat-card-header>
+  <mat-card-content>
+
+    <mat-grid-list cols="2" rowHeight="1:1">
+      <div class="centered-overlay vs-overlay">vs</div>
+      <mat-grid-tile class="character-tile"
+          [ngClass]="{'round-winner': winner == 'player1', 'round-loser': winner == 'player2'}">
+          <div class="char-background"
+              [style.background-image]="'url(assets/icons/sekirei/' + history[history.length-1].player1Character + '.png)'">
+            <span *ngFor="let stock of range((winner === 'player1' ? history[history.length-1].remainingStocks : 0))">💎</span>
+          </div>
+      </mat-grid-tile>
+      <mat-grid-tile class="character-tile"
+          [ngClass]="{'round-winner': winner == 'player2', 'round-loser': winner == 'player1'}">
+        <div class="char-background"
+              [style.background-image]="'url(assets/icons/sekirei/' + history[history.length-1].player2Character + '.png)'">
+          <span *ngFor="let stock of range((winner === 'player2' ? history[history.length-1].remainingStocks : 0))">💎</span>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+      <div class="flex-row">
+      <div style="display: flex">
+      <button mat-raised-button
+          i18n="Button text for a copy link button"
+          class="my-button"
+          color="primary"
+          (click)="copyUrl()">
+        Copy link
+      </button>
+      </div>
+      <!-- <mat-form-field class="shorter">
+        <input matInput type="text" name="stockCount"
+            [disabled]="true"
+            [(ngModel)]="url">
+      </mat-form-field> -->
+      </div>
+  </mat-card-content>
+</mat-card>
+
+<div class="wrapper" style="margin-bottom: 8px">
+  <app-character-grid
+      [playerName]="player1Name"
+      [nameStatic]="true"
+      i18n-playerNamePlaceholder
+      playerNamePlaceholder="Player 1"
+      [playerSnapshot]="snapshot.player1"
+      [selectMode]="false"
+      [readyToFight]="false"
+      [initialStockCount]="initialStockCount"></app-character-grid>
+  
+  <app-character-grid
+      [playerName]="player2Name"
+      [nameStatic]="true"
+      i18n-playerNamePlaceholder
+      playerNamePlaceholder="Player 2"
+      [playerSnapshot]="snapshot.player2"
+      [selectMode]="false"
+      [readyToFight]="false"
+      [initialStockCount]="initialStockCount"></app-character-grid>
+  </div>
+
+<mat-card class="message-box">
+  <mat-card-header>
+    <mat-card-title i18n="Heading for a battle replay">Replay</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+  <mat-grid-list cols="2" rowHeight="2:1">
+    <ng-container *ngFor="let round of history; let i = index">
+      <mat-grid-tile>
+          <div class="char-background-slice" 
+              [ngClass]="{'faded-bg': (i != 0 && round.player2Character != history[i-1].player2Character)}"
+              [style.background-image]="'url(assets/icons/sekirei/' + round.player1Character + '.png)'"></div>
+          <div style="margin-top: auto; margin-bottom: auto" *ngIf="!(i == 0 || round.player1Character != history[i-1].player1Character)">
+            <span *ngFor="let stock of range(history[i-1].remainingStocks)">💎</span>
+          </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="char-background-slice" 
+            [ngClass]="{'faded-bg': (i != 0 && round.player1Character != history[i-1].player1Character)}"
+            [style.background-image]="'url(assets/icons/sekirei/' + round.player2Character + '.png)'"></div>
+          <div style="margin-top: auto; margin-bottom: auto" *ngIf="!(i == 0 || round.player2Character != history[i-1].player2Character)">
+            <span *ngFor="let stock of range(history[i-1].remainingStocks)">💎</span>
+          </div>
+      </mat-grid-tile>
+    </ng-container>
+
+    <mat-grid-tile>
+      <div class="char-background-slice faded-bg"
+          *ngIf="history[history.length-1].winner == 'player1'"
+          [style.background-image]="'url(assets/icons/sekirei/' + history[history.length-1].player1Character + '.png)'">
+      </div>
+      <div style="margin-top: auto; margin-bottom: auto"
+        *ngIf="history[history.length-1].winner == 'player1'">
+        <span *ngFor="let stock of range(history[history.length-1].remainingStocks)">💎</span>
+      </div>
+   </mat-grid-tile>
+   <mat-grid-tile>
+     <div class="char-background-slice faded-bg"
+         *ngIf="history[history.length-1].winner == 'player2'"
+         [style.background-image]="'url(assets/icons/sekirei/' + history[history.length-1].player2Character + '.png)'">
+     </div>
+     <div style="margin-top: auto; margin-bottom: auto"
+       *ngIf="history[history.length-1].winner == 'player2'">
+       <span *ngFor="let stock of range(history[history.length-1].remainingStocks)">💎</span>
+     </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  </mat-card-content>
+</mat-card>
+
+</div>

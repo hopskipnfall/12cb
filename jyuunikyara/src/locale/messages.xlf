@@ -2,6 +2,80 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="722c62ca7de5695ca162ce1499caa644ba99c968" datatype="html">
+        <source>Player 1</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/winscreen/winscreen.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/winscreen/winscreen.component.html</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/setup/setup.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/arena/arena.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+        <note priority="1" from="description">Player 1 default text</note>
+      </trans-unit>
+      <trans-unit id="8c54dc45cc8f94e5c781f5e147d3b3e8f9880152" datatype="html">
+        <source>Player 2</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/winscreen/winscreen.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/winscreen/winscreen.component.html</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/setup/setup.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/arena/arena.component.html</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+        <note priority="1" from="description">Player 2 default text</note>
+      </trans-unit>
+      <trans-unit id="29751e002b187a2728cc372fcd9751ee9d162624" datatype="html">
+        <source>Link copied to clipboard.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/winscreen/winscreen.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">Link copied to clipboard notice</note>
+      </trans-unit>
+      <trans-unit id="3f6e0000ce21b8ddaff9348dc0edc20569ff0eb6" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{winnerName}}"/> wins!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/winscreen/winscreen.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description">Announcement of winning user</note>
+      </trans-unit>
+      <trans-unit id="904c241f75ddec1e3c32ecff8af96d216a8cbb27" datatype="html">
+        <source>
+        Copy link
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/winscreen/winscreen.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <note priority="1" from="description">Button text for a copy link button</note>
+      </trans-unit>
+      <trans-unit id="5d19483d2118b488257256767cdbb51dd63f9fea" datatype="html">
+        <source>Replay</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/winscreen/winscreen.component.html</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+        <note priority="1" from="description">Heading for a battle replay</note>
+      </trans-unit>
       <trans-unit id="5e26106135adaec11524878afa43b0969f143e7f" datatype="html">
         <source>12-Character Battle</source>
         <context-group purpose="location">
@@ -9,11 +83,19 @@
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="29148503e947c87d08d1ba9b988d2d84f74d1b8c" datatype="html">
+        <source>New 12cb!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Tooltip to start a new 12cb</note>
+      </trans-unit>
       <trans-unit id="fe46ccaae902ce974e2441abe752399288298619" datatype="html">
         <source>Language</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.html</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">21</context>
         </context-group>
         <note priority="1" from="description">Label for a language dropdown</note>
       </trans-unit>
@@ -23,7 +105,7 @@
       </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.html</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">37</context>
         </context-group>
         <note priority="1" from="description">Page footer</note>
       </trans-unit>
@@ -31,31 +113,9 @@
         <source>Ready to Fight</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/character-grid/character-grid.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">19</context>
         </context-group>
         <note priority="1" from="description">Banner indicating the player is ready to fight</note>
-      </trans-unit>
-      <trans-unit id="722c62ca7de5695ca162ce1499caa644ba99c968" datatype="html">
-        <source>Player 1</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/setup/setup.component.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/arena/arena.component.html</context>
-          <context context-type="linenumber">51</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8c54dc45cc8f94e5c781f5e147d3b3e8f9880152" datatype="html">
-        <source>Player 2</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/setup/setup.component.html</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/arena/arena.component.html</context>
-          <context context-type="linenumber">62</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="48edf4013ed41df431c8ffeb8fb2b32f51f4adff" datatype="html">
         <source>stock count</source>
@@ -95,14 +155,6 @@
           <context context-type="linenumber">38</context>
         </context-group>
         <note priority="1" from="description">Number of stocks</note>
-      </trans-unit>
-      <trans-unit id="5d19483d2118b488257256767cdbb51dd63f9fea" datatype="html">
-        <source>Replay</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/arena/arena.component.html</context>
-          <context context-type="linenumber">75</context>
-        </context-group>
-        <note priority="1" from="description">Heading for a battle replay</note>
       </trans-unit>
     </body>
   </file>

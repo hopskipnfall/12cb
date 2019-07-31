@@ -2,8 +2,14 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <span class="app-title" i18n>12-Character Battle</span>
-    <!-- <span class="spacer"></span> -->
+    <span class="app-title" i18n (click)="maybeClearAndGoHome()">12-Character Battle</span>
+    <span class="spacer"></span>
+    <button mat-icon-button
+        i18n-matTooltip="Tooltip to start a new 12cb"
+        matTooltip="New 12cb!"
+        matTooltipPosition="before"
+        *ngIf="showButton()"
+        (click)="newBattle()"><mat-icon>fiber_new</mat-icon></button>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -27,7 +33,6 @@
     </div>
     
     <mat-divider></mat-divider>
-    
     <mat-card class="footer">
       <mat-card-content i18n="Page footer">
         12cb app made by <a href="https://twitter.com/jonnjonnSSB" target="_blank">jonnjonn</a>. Code available on <a href="https://github.com/hopskipnfall/12cb" target="_blank">Github</a>. Character images drawn by <a href="https://twitter.com/sekirei2" target="_blank">Sekirei</a>.

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BattleService, GameSnapshot, Character } from '../battle.service';
+import { BattleService, GameSnapshot, Character, Round, CHARS } from '../battle.service';
 import { Router } from '@angular/router';
+import { HistoryEncoderService } from '../history-encoder.service';
 
 enum GameState {
   UNKNOWN = 0,
@@ -32,8 +33,8 @@ export class ArenaComponent implements OnInit {
   player1Selected: Character;
   player2Selected: Character;
 
-  player1Name: string;
-  player2Name: string;
+  player1Name = '';
+  player2Name = '';
 
   roundWinner = '';
 
@@ -53,13 +54,15 @@ export class ArenaComponent implements OnInit {
 
   initialCharSelect = true;
 
-  constructor(private battleService: BattleService, private router: Router) {}
+  encoded: string;
+  decoded: Round[];
+
+  constructor(private battleService: BattleService, private router: Router, private encoder: HistoryEncoderService) {}
 
   ngOnInit() {
-    this.player1Name = this.battleService.getPlayer1Name();
-    this.player2Name = this.battleService.getPlayer2Name();
+    // this.player1Name = this.battleService.getPlayer1Name();
+    // this.player2Name = this.battleService.getPlayer2Name();
     this.initialStockCount = this.battleService.getInitialStockCount();
-
 
     // this.battleService.recordRound({player1Character: 'link', player2Character: 'fox', winner: 'player1', remainingStocks: 2});
     // this.battleService.recordRound({player1Character: 'link', player2Character: 'pikachu', winner: 'player1', remainingStocks: 1});
@@ -138,6 +141,12 @@ export class ArenaComponent implements OnInit {
     this.remainingStocksSelected = 0;
     this.roundWinner = null;
     this.gameOver = this.battleService.isGameOver();
+
+    this.encoded = this.encoder.encodeHistory(this.getHistory());
+    this.decoded = this.encoder.decodeHistory(this.encoded);
+    if (this.gameOver) {
+      this.router.navigate([`/results/${this.encoded}`, {p1: this.player1Name, p2: this.player2Name}]);
+    }
   }
 
   getHistory() {
@@ -147,6 +156,16 @@ export class ArenaComponent implements OnInit {
   maybeSetRemainingStocks(gate: boolean, remainingStocks: number) {
     if (gate) {
       this.remainingStocksSelected = remainingStocks;
+    }
+  }
+
+  updateName(player: string, name: string) {
+    if (player === 'player1') {
+      this.player1Name = name;
+      this.battleService.setPlayer1Name(name);
+    } else {
+      this.player2Name = name;
+      this.battleService.setPlayer2Name(name);
     }
   }
 }

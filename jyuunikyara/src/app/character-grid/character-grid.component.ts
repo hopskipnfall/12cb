@@ -10,6 +10,8 @@ import { CharacterPickerComponent } from '../character-picker/character-picker.c
 })
 export class CharacterGridComponent implements OnInit {
   @Output() clickCharacter: EventEmitter<any> = new EventEmitter();
+  @Output() nameUpdated: EventEmitter<string> = new EventEmitter();
+
   @Input() playerSnapshot: PlayerSnapshot;
   @Input() selectedCharacter: string;
   @Input() playerName: string;
@@ -17,6 +19,7 @@ export class CharacterGridComponent implements OnInit {
   @Input() initialStockCount: boolean;
   @Input() playerNamePlaceholder: string;
   @Input() readyToFight: boolean;
+  @Input() nameStatic: boolean;
 
   player1: string;
 
