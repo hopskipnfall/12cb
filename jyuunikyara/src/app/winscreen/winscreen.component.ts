@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Sanitizer, SecurityContext } from '@angular/core';
 import { HistoryEncoderService } from '../history-encoder.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Round, GameSnapshot } from '../battle.service';
@@ -23,7 +23,11 @@ export class WinscreenComponent implements OnInit {
   winner = '';
   url = '';
 
-  constructor(private route: ActivatedRoute, private snackBar: MatSnackBar, private encoder: HistoryEncoderService) { }
+  constructor(
+      private route: ActivatedRoute,
+      private snackBar: MatSnackBar,
+      private sanitizer: Sanitizer,
+      private encoder: HistoryEncoderService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(m => {
@@ -35,7 +39,7 @@ export class WinscreenComponent implements OnInit {
       this.winner = this.history[this.history.length - 1].winner;
       this.winnerName = (this.winner === 'player1' ? this.player1Name : this.player2Name) || this.player1Default.nativeElement.textContent;
     });
-    this.url = window.location.href;
+    this.url = this.sanitizer.sanitize(SecurityContext.URL, window.location.href);
   }
 
   range(size: number) {

@@ -27,10 +27,10 @@ const routes: Routes = [
     path: 'results/:historyEncoding',
     component: WinscreenComponent,
   },
-  {
-    path: '**',
-    redirectTo: '',
-  },
+  // {
+  //   path: '**',
+  //   redirectTo: '',
+  // },
 ];
 
 @NgModule({
