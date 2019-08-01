@@ -3,6 +3,7 @@ import { HistoryEncoderService } from '../history-encoder.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Round, GameSnapshot } from '../battle.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ClipboardService } from '../clipboard.service';
 
 @Component({
   selector: 'app-winscreen',
@@ -27,7 +28,8 @@ export class WinscreenComponent implements OnInit {
       private route: ActivatedRoute,
       private snackBar: MatSnackBar,
       private sanitizer: Sanitizer,
-      private encoder: HistoryEncoderService) { }
+      private encoder: HistoryEncoderService,
+      private clipboard: ClipboardService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(m => {
@@ -51,17 +53,7 @@ export class WinscreenComponent implements OnInit {
   }
 
   copyUrl() {
-    const selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
-    selBox.value = this.url;
-    document.body.appendChild(selBox);
-    selBox.focus();
-    selBox.select();
-    document.execCommand('copy');
-    document.body.removeChild(selBox);
+    this.clipboard.copy(this.url);
 
     this.snackBar.open(this.copiedToClipboard.nativeElement.textContent, null, {
       duration: 2500,
