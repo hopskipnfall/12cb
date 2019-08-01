@@ -6,10 +6,6 @@ import { ArenaComponent } from './arena/arena.component';
 import { WinscreenComponent } from './winscreen/winscreen.component';
 import { Route } from '@angular/compiler/src/core';
 
-// export function isLanguage(segments: UrlSegment[], group: UrlSegmentGroup, route: Route): UrlMatchResult {
-//   return null;
-// }
-
 const routes: Routes = [
   {
     path: '',
@@ -27,10 +23,10 @@ const routes: Routes = [
     path: 'results/:historyEncoding',
     component: WinscreenComponent,
   },
-  // {
-  //   path: '**',
-  //   redirectTo: '',
-  // },
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];
 
 @NgModule({
