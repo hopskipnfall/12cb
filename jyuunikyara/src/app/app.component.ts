@@ -1,9 +1,9 @@
+import { BattleService } from './battle.service';
 import { Component, Inject, LOCALE_ID } from '@angular/core';
-import {MediaMatcher} from '@angular/cdk/layout';
 import { CookieService } from 'ngx-cookie-service';
 import { MatSelectChange } from '@angular/material/select';
+import { MediaMatcher } from '@angular/cdk/layout';
 import { Router, ActivatedRoute } from '@angular/router';
-import { BattleService } from './battle.service';
 import { WinscreenComponent } from './winscreen/winscreen.component';
 
 @Component({
@@ -17,20 +17,20 @@ export class AppComponent {
   readonly LANGUAGE_COOKIE_NAME = 'language_override';
 
   readonly LANGUAGES = [
-    {code: 'en', display: 'English'},
-    {code: 'ja', display: '日本語'},
+    { code: 'en', display: 'English' },
+    { code: 'ja', display: '日本語' },
   ];
   selectedLanguage: string;
 
   mobileQuery: MediaQueryList;
 
   constructor(
-      @Inject(LOCALE_ID) locale: string,
-      private cookieService: CookieService,
-      media: MediaMatcher,
-      private router: Router,
-      private route: ActivatedRoute,
-      private battleService: BattleService) {
+    @Inject(LOCALE_ID) locale: string,
+    private cookieService: CookieService,
+    media: MediaMatcher,
+    private router: Router,
+    private route: ActivatedRoute,
+    private battleService: BattleService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
 
     const languageOverride = cookieService.get(this.LANGUAGE_COOKIE_NAME);

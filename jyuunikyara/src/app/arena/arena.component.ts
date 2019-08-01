@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { BattleService, GameSnapshot, Character, Round, CHARS } from '../battle.service';
 import { Router } from '@angular/router';
 import { HistoryEncoderService } from '../history-encoder.service';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 enum GameState {
   UNKNOWN = 0,
@@ -60,7 +60,7 @@ export class ArenaComponent implements OnInit, OnDestroy {
   encoded: string;
   decoded: Round[];
 
-  constructor(private battleService: BattleService, private router: Router, private encoder: HistoryEncoderService) {}
+  constructor(private battleService: BattleService, private router: Router, private encoder: HistoryEncoderService) { }
 
   ngOnInit() {
     const p1sub = this.battleService.getPlayer1Name().subscribe(name => {
@@ -162,7 +162,7 @@ export class ArenaComponent implements OnInit, OnDestroy {
     this.encoded = this.encoder.encodeHistory(this.getHistory());
     this.decoded = this.encoder.decodeHistory(this.encoded);
     if (this.gameOver) {
-      this.router.navigate([`/results/${this.encoded}`, {p1: this.player1Name, p2: this.player2Name}]);
+      this.router.navigate([`/results/${this.encoded}`, { p1: this.player1Name, p2: this.player2Name }]);
     }
   }
 

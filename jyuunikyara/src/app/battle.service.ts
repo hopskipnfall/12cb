@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 export interface Character {
   name: string;
@@ -23,7 +23,7 @@ export interface Round {
 }
 
 export const CHARS = ['luigi', 'mario', 'donkey_kong', 'link', 'samus',
-    'captain_falcon', 'ness', 'yoshi', 'kirby', 'fox', 'pikachu', 'jigglypuff'];
+  'captain_falcon', 'ness', 'yoshi', 'kirby', 'fox', 'pikachu', 'jigglypuff'];
 
 @Injectable({
   providedIn: 'root'
@@ -68,8 +68,8 @@ export class BattleService {
 
   getSnapshot(): GameSnapshot {
     const snapshot: GameSnapshot = {
-      player1: {characters: CHARS.map(char => ({name: char, stocks: this.initialStockCount}))},
-      player2: {characters: CHARS.map(char => ({name: char, stocks: this.initialStockCount}))},
+      player1: { characters: CHARS.map(char => ({ name: char, stocks: this.initialStockCount })) },
+      player2: { characters: CHARS.map(char => ({ name: char, stocks: this.initialStockCount })) },
     };
     for (const round of this.history) {
       if (round.winner === 'player1') {
@@ -87,7 +87,7 @@ export class BattleService {
     const snapshot = this.getSnapshot();
 
     const player1Alive = snapshot.player1.characters.find(c => c.stocks > 0);
-    const player2Alive =  snapshot.player2.characters.find(c => c.stocks > 0);
+    const player2Alive = snapshot.player2.characters.find(c => c.stocks > 0);
 
     return !(player1Alive && player2Alive);
   }

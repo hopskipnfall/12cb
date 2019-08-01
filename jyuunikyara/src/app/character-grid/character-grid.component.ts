@@ -24,7 +24,7 @@ export class CharacterGridComponent implements OnInit {
 
   locked = false;
 
-  constructor(private matDialog: MatDialog) {}
+  constructor(private matDialog: MatDialog) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

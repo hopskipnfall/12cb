@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Sanitizer, SecurityContext } from '@angular/core';
 import { HistoryEncoderService } from '../history-encoder.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Round, GameSnapshot } from '../battle.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ClipboardService } from '../clipboard.service';
@@ -25,11 +25,11 @@ export class WinscreenComponent implements OnInit {
   url = '';
 
   constructor(
-      private route: ActivatedRoute,
-      private snackBar: MatSnackBar,
-      private sanitizer: Sanitizer,
-      private encoder: HistoryEncoderService,
-      private clipboard: ClipboardService) { }
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
+    private sanitizer: Sanitizer,
+    private encoder: HistoryEncoderService,
+    private clipboard: ClipboardService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(m => {
