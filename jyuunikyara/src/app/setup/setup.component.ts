@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 })
 export class SetupComponent implements OnInit {
   stockCount = 4;
-  player1Name: string = 'Player 1';
-  player2Name: string = 'Player 2';
+  player1Name = 'Player 1';
+  player2Name = 'Player 2';
 
   constructor(private battleService: BattleService, private router: Router) { }
 
@@ -18,9 +18,9 @@ export class SetupComponent implements OnInit {
   }
 
   startBattle() {
-    this.battleService.setInitialStockCount(this.stockCount);
-    this.battleService.setPlayerNames(this.player1Name, this.player2Name);
+    // this.battleService.setInitialStockCount(this.stockCount);
+    // this.battleService.setPlayerNames(this.player1Name, this.player2Name);
 
-    this.router.navigate(['/battle']);
+    // this.router.navigate(['/battle']);
   }
 }

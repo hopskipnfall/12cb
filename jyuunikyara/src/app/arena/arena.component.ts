@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { BattleService, GameSnapshot, Character, Round, CHARS } from '../battle.service';
 import { Router } from '@angular/router';
 import { HistoryEncoderService } from '../history-encoder.service';
+import { Observable, Subscription } from 'rxjs';
 
 enum GameState {
   UNKNOWN = 0,
@@ -27,7 +28,9 @@ export interface RoundReplay {
   templateUrl: './arena.component.html',
   styleUrls: ['./arena.component.sass']
 })
-export class ArenaComponent implements OnInit {
+export class ArenaComponent implements OnInit, OnDestroy {
+  subscriptions: Subscription[] = [];
+
   gameState: GameState = GameState.INITIAL_CHARACTER_SELECT;
 
   player1Selected: Character;
@@ -60,8 +63,16 @@ export class ArenaComponent implements OnInit {
   constructor(private battleService: BattleService, private router: Router, private encoder: HistoryEncoderService) {}
 
   ngOnInit() {
-    // this.player1Name = this.battleService.getPlayer1Name();
-    // this.player2Name = this.battleService.getPlayer2Name();
+    const p1sub = this.battleService.getPlayer1Name().subscribe(name => {
+      this.player1Name = name;
+    });
+    this.subscriptions.push(p1sub);
+
+    const p2sub = this.battleService.getPlayer2Name().subscribe(name => {
+      this.player2Name = name;
+    });
+    this.subscriptions.push(p2sub);
+
     this.initialStockCount = this.battleService.getInitialStockCount();
 
     // this.battleService.recordRound({player1Character: 'link', player2Character: 'fox', winner: 'player1', remainingStocks: 2});
@@ -82,6 +93,12 @@ export class ArenaComponent implements OnInit {
     // this.characterClicked('player1', {name: 'captain_falcon', stocks: 3});
     // this.characterClicked('player2', {name: 'captain_falcon', stocks: 4});
     this.snapshot = this.battleService.getSnapshot();
+  }
+
+  ngOnDestroy() {
+    for (const subscription of this.subscriptions) {
+      subscription.unsubscribe();
+    }
   }
 
   characterClicked(player: string, event: Character) {
@@ -161,10 +178,8 @@ export class ArenaComponent implements OnInit {
 
   updateName(player: string, name: string) {
     if (player === 'player1') {
-      this.player1Name = name;
       this.battleService.setPlayer1Name(name);
     } else {
-      this.player2Name = name;
       this.battleService.setPlayer2Name(name);
     }
   }

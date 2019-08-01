@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { Subject, Observable, BehaviorSubject } from 'rxjs';
 
 export interface Character {
   name: string;
@@ -29,35 +29,29 @@ export const CHARS = ['luigi', 'mario', 'donkey_kong', 'link', 'samus',
   providedIn: 'root'
 })
 export class BattleService {
-  private player1: string;
-  private player2: string;
   private initialStockCount = 4;
 
   private history: Round[] = [];
 
-  setPlayerNames(player1: string, player2: string) {
-    this.player1 = player1;
-    this.player2 = player2;
-  }
-
-  setPlayer1Name(name: string) {
-    this.player1 = name;
-  }
-
-  setPlayer2Name(name: string) {
-    this.player2 = name;
-  }
+  private player1Name: BehaviorSubject<string> = new BehaviorSubject('');
+  private player2Name: BehaviorSubject<string> = new BehaviorSubject('');
 
   setInitialStockCount(count: number) {
     this.initialStockCount = count;
   }
 
-  getPlayer1Name() {
-    return this.player1;
+  getPlayer1Name(): Observable<string> {
+    return this.player1Name;
+  }
+  setPlayer1Name(name: string) {
+    this.player1Name.next(name);
   }
 
-  getPlayer2Name() {
-    return this.player2;
+  getPlayer2Name(): Observable<string> {
+    return this.player2Name;
+  }
+  setPlayer2Name(name: string) {
+    this.player2Name.next(name);
   }
 
   recordRound(round: Round) {
@@ -99,8 +93,8 @@ export class BattleService {
   }
 
   clear() {
-    this.player1 = '';
-    this.player2 = '';
+    this.player1Name.next('');
+    this.player2Name.next('');
     this.initialStockCount = 4;
     this.history = [];
   }
