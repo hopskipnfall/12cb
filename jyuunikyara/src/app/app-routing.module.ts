@@ -1,10 +1,7 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule, UrlSegment, UrlSegmentGroup, UrlMatchResult } from '@angular/router';
-import { CharacterGridComponent } from './character-grid/character-grid.component';
-import { SetupComponent } from './setup/setup.component';
 import { ArenaComponent } from './arena/arena.component';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { WinscreenComponent } from './winscreen/winscreen.component';
-import { Route } from '@angular/compiler/src/core';
 
 const routes: Routes = [
   {

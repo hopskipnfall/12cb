@@ -1,14 +1,8 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { BattleService, GameSnapshot, Character, Round, CHARS } from '../battle.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { BattleService, GameSnapshot, Character, Round, RoundInProgress } from '../battle.service';
 import { Router } from '@angular/router';
 import { HistoryEncoderService } from '../history-encoder.service';
 import { Subscription } from 'rxjs';
-
-enum GameState {
-  UNKNOWN = 0,
-  INITIAL_CHARACTER_SELECT = 1,
-  FIGHTING = 2,
-}
 
 export interface RoundReplay {
   player1: {
@@ -30,8 +24,6 @@ export interface RoundReplay {
 })
 export class ArenaComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
-
-  gameState: GameState = GameState.INITIAL_CHARACTER_SELECT;
 
   player1Selected: Character;
   player2Selected: Character;
@@ -57,63 +49,64 @@ export class ArenaComponent implements OnInit, OnDestroy {
 
   initialCharSelect = true;
 
-  encoded: string;
   decoded: Round[];
 
   constructor(private battleService: BattleService, private router: Router, private encoder: HistoryEncoderService) { }
 
   ngOnInit() {
-    const p1sub = this.battleService.getPlayer1Name().subscribe(name => {
-      this.player1Name = name;
-    });
-    this.subscriptions.push(p1sub);
+    this.subscriptions.push(
+      this.battleService.getPlayer1Name().subscribe(name => {
+        this.player1Name = name;
+      }),
 
-    const p2sub = this.battleService.getPlayer2Name().subscribe(name => {
-      this.player2Name = name;
-    });
-    this.subscriptions.push(p2sub);
+      this.battleService.getPlayer2Name().subscribe(name => {
+        this.player2Name = name;
+      }),
+
+      this.battleService.getRoundInProgress().subscribe((round: RoundInProgress) => {
+        this.roundWinner = round.winner;
+        this.player1Selected = round.player1;
+        this.player2Selected = round.player2;
+
+        if (!round.player1) {
+          this.p1SelectMode = true;
+        } else if (!round.player2) {
+          this.p2SelectMode = true;
+        }
+
+        this.snapshot = this.battleService.getSnapshot();
+
+        this.p1RemainingStocks = round.player1 ? round.player1.stocks : 0;
+        this.p2RemainingStocks = round.player2 ? round.player2.stocks : 0;
+        this.remainingStocksSelected = 0;
+
+        if (this.battleService.isGameOver()) {
+          const encoded = this.encoder.encodeHistory(this.battleService.getHistory());
+          this.router.navigate([`/results/${encoded}`, { p1: this.player1Name, p2: this.player2Name }]);
+        }
+      }),
+    );
 
     this.initialStockCount = this.battleService.getInitialStockCount();
 
-    // this.battleService.recordRound({player1Character: 'link', player2Character: 'fox', winner: 'player1', remainingStocks: 2});
-    // this.battleService.recordRound({player1Character: 'link', player2Character: 'pikachu', winner: 'player1', remainingStocks: 1});
-    // this.battleService.recordRound({player1Character: 'link', player2Character: 'jigglypuff', winner: 'player1', remainingStocks: 1});
-    // this.battleService.recordRound({player1Character: 'link', player2Character: 'ness', winner: 'player1', remainingStocks: 1});
-    // this.battleService.recordRound({player1Character: 'link', player2Character: 'kirby', winner: 'player2', remainingStocks: 2});
-    // this.battleService.recordRound({player1Character: 'ness', player2Character: 'kirby', winner: 'player1', remainingStocks: 4});
-    // this.battleService.recordRound({player1Character: 'ness', player2Character: 'yoshi', winner: 'player1', remainingStocks: 2});
-    // this.battleService.recordRound({player1Character: 'ness', player2Character: 'mario', winner: 'player2', remainingStocks: 3});
-    // this.battleService.recordRound({player1Character: 'luigi', player2Character: 'mario', winner: 'player2', remainingStocks: 1});
-    // this.battleService.recordRound({player1Character: 'captain_falcon', player2Character: 'mario', winner: 'player1', remainingStocks: 3});
-    // this.battleService.recordRound({player1Character: 'captain_falcon', player2Character: 'donkey_kong', winner: 'player1', remainingStocks: 3});
-    // this.battleService.recordRound({player1Character: 'captain_falcon', player2Character: 'luigi', winner: 'player1', remainingStocks: 3});
-    // this.battleService.recordRound({player1Character: 'captain_falcon', player2Character: 'samus', winner: 'player1', remainingStocks: 3});
-    // this.battleService.recordRound({player1Character: 'captain_falcon', player2Character: 'link', winner: 'player1', remainingStocks: 3});
-    // this.battleService.recordRound({player1Character: 'captain_falcon', player2Character: 'luigi', winner: 'player1', remainingStocks: 3});
-    // this.characterClicked('player1', {name: 'captain_falcon', stocks: 3});
-    // this.characterClicked('player2', {name: 'captain_falcon', stocks: 4});
     this.snapshot = this.battleService.getSnapshot();
   }
 
   ngOnDestroy() {
-    for (const subscription of this.subscriptions) {
-      subscription.unsubscribe();
-    }
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 
-  characterClicked(player: string, event: Character) {
-    if (event.stocks === 0) {
+  characterClicked(player: string, character: Character) {
+    if (character.stocks === 0) {
       return;
     }
 
     if (player === 'player1' && this.p1SelectMode) {
-      this.player1Selected = event;
+      this.battleService.player1Select(character);
       this.p1SelectMode = false;
-      this.p1RemainingStocks = event.stocks;
     } else if (player === 'player2' && this.p2SelectMode) {
-      this.player2Selected = event;
+      this.battleService.player2Select(character);
       this.p2SelectMode = false;
-      this.p2RemainingStocks = event.stocks;
     }
 
     if (this.player1Selected && this.player2Selected) {
@@ -123,7 +116,7 @@ export class ArenaComponent implements OnInit, OnDestroy {
 
   playerCharClicked(player: string) {
     if (this.player1Selected && this.player2Selected) {
-      this.roundWinner = player;
+      this.battleService.setRoundWinner(player);
     }
   }
 
@@ -136,38 +129,14 @@ export class ArenaComponent implements OnInit, OnDestroy {
   }
 
   submitRound() {
-    const thing = {
-      winner: this.roundWinner,
-      player1Character: this.player1Selected.name,
-      player2Character: this.player2Selected.name,
-      remainingStocks: this.remainingStocksSelected,
-    };
-    this.battleService.recordRound(thing);
-    this.snapshot = this.battleService.getSnapshot();
+    this.battleService.submitRound(this.remainingStocksSelected);
+
     if (this.roundWinner === 'player1') {
-      this.player2Selected = null;
       this.p2SelectMode = true;
-      this.p1RemainingStocks = this.remainingStocksSelected;
-      this.p2RemainingStocks = 0;
     } else if (this.roundWinner === 'player2') {
-      this.player1Selected = null;
       this.p1SelectMode = true;
-      this.p2RemainingStocks = this.remainingStocksSelected;
-      this.p1RemainingStocks = 0;
     }
-    this.remainingStocksSelected = 0;
-    this.roundWinner = null;
     this.gameOver = this.battleService.isGameOver();
-
-    this.encoded = this.encoder.encodeHistory(this.getHistory());
-    this.decoded = this.encoder.decodeHistory(this.encoded);
-    if (this.gameOver) {
-      this.router.navigate([`/results/${this.encoded}`, { p1: this.player1Name, p2: this.player2Name }]);
-    }
-  }
-
-  getHistory() {
-    return this.battleService.getHistory();
   }
 
   maybeSetRemainingStocks(gate: boolean, remainingStocks: number) {
