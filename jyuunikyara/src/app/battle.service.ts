@@ -43,11 +43,45 @@ export class BattleService {
   private player1Name: BehaviorSubject<string> = new BehaviorSubject('');
   private player2Name: BehaviorSubject<string> = new BehaviorSubject('');
 
-  private readonly currentRound: BehaviorSubject<RoundInProgress> = new BehaviorSubject({
-    player1: null,
-    player2: null,
-    winner: '',
-  });
+  private readonly currentRound: BehaviorSubject<RoundInProgress> = new BehaviorSubject(new RoundInProgress());
+
+  undo() {
+    if (this.history.length === 0) {
+      this.currentRound.next(new RoundInProgress());
+      return;
+    }
+
+    const curr = this.currentRound.value;
+
+    if (curr.winner) {
+      this.currentRound.next({
+        player1: curr.player1,
+        player2: curr.player2,
+        winner: '',
+      });
+      return;
+    }
+
+    if (this.history[this.history.length - 1].winner === 'player1' && curr.player2) {
+      this.currentRound.next({
+        player1: curr.player1,
+        winner: '',
+      });
+      return;
+    }
+    if (this.history[this.history.length - 1].winner === 'player2' && curr.player1) {
+      this.currentRound.next({
+        player2: curr.player2,
+        winner: '',
+      });
+      return;
+    }
+
+    // TODO: Undo bad round!
+    // const bad = this.history.pop();
+
+    console.error('NOTHING TO DO');
+  }
 
   setInitialStockCount(count: number) {
     this.initialStockCount = count;

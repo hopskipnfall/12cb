@@ -96,6 +96,10 @@ export class ArenaComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
 
+  undo() {
+    this.battleService.undo();
+  }
+
   characterClicked(player: string, character: Character) {
     if (character.stocks === 0) {
       return;
