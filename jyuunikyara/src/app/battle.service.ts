@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, AsyncSubject } from 'rxjs';
 
 export interface Character {
   name: string;
@@ -45,8 +45,18 @@ export class BattleService {
 
   private readonly currentRound: BehaviorSubject<RoundInProgress> = new BehaviorSubject(new RoundInProgress());
 
+  private readonly snapshot: BehaviorSubject<GameSnapshot> = new BehaviorSubject(this.defaultGameSnapshot());
+
+  private defaultGameSnapshot(): GameSnapshot {
+    return {
+      player1: { characters: CHARS.map(char => ({ name: char, stocks: this.initialStockCount })) },
+      player2: { characters: CHARS.map(char => ({ name: char, stocks: this.initialStockCount })) },
+    };
+  }
+
   undo() {
     if (this.history.length === 0) {
+      console.error('No history. Resetting round.');
       this.currentRound.next(new RoundInProgress());
       return;
     }
@@ -54,6 +64,7 @@ export class BattleService {
     const curr = this.currentRound.value;
 
     if (curr.winner) {
+      console.error('Unsetting winner');
       this.currentRound.next({
         player1: curr.player1,
         player2: curr.player2,
@@ -62,25 +73,52 @@ export class BattleService {
       return;
     }
 
-    if (this.history[this.history.length - 1].winner === 'player1' && curr.player2) {
-      this.currentRound.next({
-        player1: curr.player1,
-        winner: '',
-      });
-      return;
+    if (this.history[this.history.length - 1].winner === 'player1') {
+      if (curr.player2) {
+        console.error('Undoing history for P1');
+        this.currentRound.next({
+          player1: curr.player1,
+          winner: '',
+        });
+        return;
+      } else {
+        const h = this.history.pop();
+        const snapshot = this.buildSnapshot();
+        this.snapshot.next(snapshot);
+        const p1 = snapshot.player1.characters.find(r => r.name === curr.player1.name);
+        const p2 = snapshot.player2.characters.find(r => r.name === h.player2Character);
+        this.currentRound.next({
+          player1: p1,
+          player2: p2,
+          winner: '',
+        });
+        return;
+      }
     }
-    if (this.history[this.history.length - 1].winner === 'player2' && curr.player1) {
-      this.currentRound.next({
-        player2: curr.player2,
-        winner: '',
-      });
-      return;
+    if (this.history[this.history.length - 1].winner === 'player2') {
+      if (curr.player1) {
+        console.error('Undoing history for P2');
+        this.currentRound.next({
+          player2: curr.player2,
+          winner: '',
+        });
+        return;
+      } else {
+        const h = this.history.pop();
+        const snapshot = this.buildSnapshot();
+        this.snapshot.next(snapshot);
+        const p1 = snapshot.player1.characters.find(r => r.name === h.player1Character);
+        const p2 = snapshot.player2.characters.find(r => r.name === curr.player2.name);
+        this.currentRound.next({
+          player1: p1,
+          player2: p2,
+          winner: '',
+        });
+        return;
+      }
     }
 
-    // TODO: Undo bad round!
-    // const bad = this.history.pop();
-
-    console.error('NOTHING TO DO');
+    console.error('Popping thing.');
   }
 
   setInitialStockCount(count: number) {
@@ -103,6 +141,10 @@ export class BattleService {
 
   getRoundInProgress(): Observable<RoundInProgress> {
     return this.currentRound;
+  }
+
+  getGameSnapshot(): Observable<GameSnapshot> {
+    return this.snapshot;
   }
 
   player1Select(character: Character) {
@@ -139,11 +181,8 @@ export class BattleService {
     return this.initialStockCount;
   }
 
-  getSnapshot(): GameSnapshot {
-    const snapshot: GameSnapshot = {
-      player1: { characters: CHARS.map(char => ({ name: char, stocks: this.initialStockCount })) },
-      player2: { characters: CHARS.map(char => ({ name: char, stocks: this.initialStockCount })) },
-    };
+  private buildSnapshot(): GameSnapshot {
+    const snapshot: GameSnapshot = this.defaultGameSnapshot();
     for (const round of this.history) {
       if (round.winner === 'player1') {
         snapshot.player1.characters.find(char => char.name === round.player1Character).stocks = round.remainingStocks;
@@ -157,7 +196,7 @@ export class BattleService {
   }
 
   isGameOver(): boolean {
-    const snapshot = this.getSnapshot();
+    const snapshot = this.snapshot.value;
 
     const player1Alive = snapshot.player1.characters.find(c => c.stocks > 0);
     const player2Alive = snapshot.player2.characters.find(c => c.stocks > 0);
@@ -177,16 +216,8 @@ export class BattleService {
     const nextRound = new RoundInProgress();
 
     if (inProgress.winner === 'player1') {
-      // HACK!!!! this makes it show up on CSS.
-      inProgress.player1.stocks = remainingStocks;
-      inProgress.player2.stocks = 0;
-
       nextRound.player1 = {name: inProgress.player1.name, stocks: remainingStocks};
     } else {
-      // HACK!!!! this makes it show up on CSS.
-      inProgress.player2.stocks = remainingStocks;
-      inProgress.player1.stocks = 0;
-
       nextRound.player2 = {name: inProgress.player2.name, stocks: remainingStocks};
     }
 
@@ -198,6 +229,7 @@ export class BattleService {
     });
 
     this.currentRound.next(nextRound);
+    this.snapshot.next(this.buildSnapshot());
 
     // if (this.roundWinner === 'player1') {
     //   this.player2Selected = null;

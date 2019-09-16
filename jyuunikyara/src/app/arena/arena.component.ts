@@ -64,17 +64,14 @@ export class ArenaComponent implements OnInit, OnDestroy {
       }),
 
       this.battleService.getRoundInProgress().subscribe((round: RoundInProgress) => {
+        console.error('new round!', round);
         this.roundWinner = round.winner;
         this.player1Selected = round.player1;
         this.player2Selected = round.player2;
 
-        if (!round.player1) {
-          this.p1SelectMode = true;
-        } else if (!round.player2) {
-          this.p2SelectMode = true;
-        }
-
-        this.snapshot = this.battleService.getSnapshot();
+        this.p1SelectMode = !round.player1;
+        this.p2SelectMode = !round.player2;
+        this.initialCharSelect = (!round.player1 || !round.player2) && this.battleService.getHistory().length === 0;
 
         this.p1RemainingStocks = round.player1 ? round.player1.stocks : 0;
         this.p2RemainingStocks = round.player2 ? round.player2.stocks : 0;
@@ -85,11 +82,13 @@ export class ArenaComponent implements OnInit, OnDestroy {
           this.router.navigate([`/results/${encoded}`, { p1: this.player1Name, p2: this.player2Name }]);
         }
       }),
+
+      this.battleService.getGameSnapshot().subscribe((snapshot: GameSnapshot) => {
+        this.snapshot = snapshot;
+      }),
     );
 
     this.initialStockCount = this.battleService.getInitialStockCount();
-
-    this.snapshot = this.battleService.getSnapshot();
   }
 
   ngOnDestroy() {
@@ -107,15 +106,15 @@ export class ArenaComponent implements OnInit, OnDestroy {
 
     if (player === 'player1' && this.p1SelectMode) {
       this.battleService.player1Select(character);
-      this.p1SelectMode = false;
+      // this.p1SelectMode = false;
     } else if (player === 'player2' && this.p2SelectMode) {
       this.battleService.player2Select(character);
-      this.p2SelectMode = false;
+      // this.p2SelectMode = false;
     }
 
-    if (this.player1Selected && this.player2Selected) {
-      this.initialCharSelect = false;
-    }
+    // if (this.player1Selected && this.player2Selected) {
+    //   this.initialCharSelect = false;
+    // }
   }
 
   playerCharClicked(player: string) {
@@ -135,11 +134,11 @@ export class ArenaComponent implements OnInit, OnDestroy {
   submitRound() {
     this.battleService.submitRound(this.remainingStocksSelected);
 
-    if (this.roundWinner === 'player1') {
-      this.p2SelectMode = true;
-    } else if (this.roundWinner === 'player2') {
-      this.p1SelectMode = true;
-    }
+    // if (this.roundWinner === 'player1') {
+    //   this.p2SelectMode = true;
+    // } else if (this.roundWinner === 'player2') {
+    //   this.p1SelectMode = true;
+    // }
     this.gameOver = this.battleService.isGameOver();
   }
 
