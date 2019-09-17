@@ -1,31 +1,27 @@
 {
   "name": "server",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Express server for 12cb app",
-  "main": "dist/out-tsc/index.js",
+  "private": true,
   "scripts": {
-    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
-    "build": "tsc",
-    "prestart": "npm run build",
-    "start": "node .",
+    "start": "node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hopskipnfall/12cb.git"
   },
   "author": "Jonn Spencer (jonnjonn)",
   "bugs": {
     "url": "https://github.com/hopskipnfall/12cb/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hopskipnfall/12cb.git"
+  },
   "homepage": "https://github.com/hopskipnfall/12cb#readme",
   "dependencies": {
-    "express": "^4.17.1"
-  },
-  "devDependencies": {
-    "@types/express": "^4.17.1",
-    "@types/node": "^12.7.5",
-    "tslint": "^5.20.0",
-    "typescript": "^3.6.3"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1"
   }
 }
