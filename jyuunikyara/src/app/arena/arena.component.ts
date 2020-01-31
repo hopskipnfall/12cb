@@ -76,11 +76,6 @@ export class ArenaComponent implements OnInit, OnDestroy {
         this.p1RemainingStocks = round.player1 ? round.player1.stocks : 0;
         this.p2RemainingStocks = round.player2 ? round.player2.stocks : 0;
         this.remainingStocksSelected = 0;
-
-        if (this.battleService.isGameOver()) {
-          const encoded = this.encoder.encodeHistory(this.battleService.getHistory());
-          this.router.navigate([`/results/${encoded}`, { p1: this.player1Name, p2: this.player2Name }]);
-        }
       }),
 
       this.battleService.getGameSnapshot().subscribe((snapshot: GameSnapshot) => {
@@ -140,6 +135,11 @@ export class ArenaComponent implements OnInit, OnDestroy {
     //   this.p1SelectMode = true;
     // }
     this.gameOver = this.battleService.isGameOver();
+
+    if (this.gameOver) {
+      const encoded = this.encoder.encodeHistory(this.battleService.getHistory());
+      this.router.navigate([`/results/${encoded}`, { p1: this.player1Name, p2: this.player2Name }]);
+    }
   }
 
   maybeSetRemainingStocks(gate: boolean, remainingStocks: number) {

@@ -201,7 +201,7 @@ export class BattleService {
     const player1Alive = snapshot.player1.characters.find(c => c.stocks > 0);
     const player2Alive = snapshot.player2.characters.find(c => c.stocks > 0);
 
-    return !(player1Alive && player2Alive);
+    return !player1Alive || !player2Alive;
   }
 
   clear() {
@@ -228,8 +228,9 @@ export class BattleService {
       player2Character: inProgress.player2.name,
     });
 
+    const snapshot = this.buildSnapshot();
     this.currentRound.next(nextRound);
-    this.snapshot.next(this.buildSnapshot());
+    this.snapshot.next(snapshot);
 
     // if (this.roundWinner === 'player1') {
     //   this.player2Selected = null;
