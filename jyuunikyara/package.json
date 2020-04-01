@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "int:extract": "ng xi18n --output-path locale",
-    "buildprod": "rm -rf ../server/public/compiled_app; ng build --prod --configuration=production && ng build --prod --configuration=ja && cp -r dist/jyuunikyara ../server/public/compiled_app"
+    "buildprod": "rm -rf ../server/public/compiled_app; ng build --prod --base-href=\"/en/\" --configuration=production && ng build --prod  --base-href=\"/ja/\" --configuration=ja && cp -r dist/jyuunikyara/* ../server/public"
   },
   "private": true,
   "dependencies": {
