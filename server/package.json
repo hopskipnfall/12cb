@@ -1,27 +1,14 @@
 {
   "name": "server",
-  "version": "0.0.0",
-  "description": "Express server for 12cb app",
-  "private": true,
+  "version": "1.0.0",
+  "description": "Server for 12cb app",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Jonn Spencer (jonnjonn)",
-  "bugs": {
-    "url": "https://github.com/hopskipnfall/12cb/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hopskipnfall/12cb.git"
-  },
-  "homepage": "https://github.com/hopskipnfall/12cb#readme",
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
-    "morgan": "~1.9.1"
+    "express": "^4.17.1"
   }
 }
