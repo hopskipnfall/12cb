@@ -22,6 +22,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/*', indexRouter);
 // app.use('/users', usersRouter);
 
+// app.get('/', function(req, res, next) {
+//   res.redirect(`/en/index.html`)
+// });
+
+// // app.get('/(en|ja)/results/(.*)')
+
+// app.get('/*', function(req, res, next) {
+//   // throw Error("GOOD!");
+
+//   if (!req.baseUrl.startsWith('/en') && !req.baseUrl.startsWith('en')) {
+//     // res.redirect(`en/${req.baseUrl}`);
+//     return;
+//   } else if (!req.baseUrl.contains('.')) {
+//     // res.redirect(`/en/index.html`)
+//   }
+// });
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

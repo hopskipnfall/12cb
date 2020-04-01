@@ -8,22 +8,22 @@ const routes: Routes = [
     path: '',
     component: ArenaComponent,
   },
-  {
-    path: 'en/results/:historyEncoding',
-    redirectTo: 'results/:historyEncoding',
-  },
-  {
-    path: 'ja/results/:historyEncoding',
-    redirectTo: 'results/:historyEncoding',
-  },
+  // {
+  //   path: 'en/results/:historyEncoding',
+  //   redirectTo: 'results/:historyEncoding',
+  // },
+  // {
+  //   path: 'ja/results/:historyEncoding',
+  //   redirectTo: 'results/:historyEncoding',
+  // },
   {
     path: 'results/:historyEncoding',
     component: WinscreenComponent,
   },
-  {
-    path: '**',
-    redirectTo: '',
-  },
+  // {
+  //   path: '**',
+  //   redirectTo: '',
+  // },
 ];
 
 @NgModule({
