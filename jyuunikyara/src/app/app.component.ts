@@ -43,7 +43,9 @@ export class AppComponent {
 
   changeLocale(event: MatSelectChange) {
     this.cookieService.set(this.LANGUAGE_COOKIE_NAME, this.selectedLanguage, null, '/');
-    window.location.reload();
+    // Go up one level and let the server decide where to send you.
+    window.location.href = '../';
+    // window.location.reload();
   }
 
   showButton() {
