@@ -2,6 +2,21 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { PlayerSnapshot, Character } from '../battle.service';
 import { MatDialog } from '@angular/material/dialog';
 
+const CHARACTER_POSITION_MAPPING = {
+  'luigi': 1,
+  'mario': 1,
+  'donkey_kong': 2,
+  'link': 2,
+  'samus': 3,
+  'captain_falcon': 3,
+  'ness': 4,
+  'yoshi': 4,
+  'kirby': 5,
+  'fox': 5,
+  'pikachu': 6,
+  'jigglypuff': 6,
+};
+
 @Component({
   selector: 'app-character-grid',
   templateUrl: './character-grid.component.html',
@@ -21,21 +36,6 @@ export class CharacterGridComponent implements OnInit {
   @Input() selectedCharacter: Character;
   @Input() selectMode: boolean;
   @Input() showStockSelector: boolean;
-
-  const CHARACTER_POSITION_MAPPING = {
-    'luigi': 1,
-    'mario': 1,
-    'donkey_kong': 2,
-    'link': 2,
-    'samus': 3,
-    'captain_falcon': 3,
-    'ness': 4,
-    'yoshi': 4,
-    'kirby': 5,
-    'fox': 5,
-    'pikachu': 6,
-    'jigglypuff': 6,
-  };
 
   player1: string;
 
@@ -57,6 +57,6 @@ export class CharacterGridComponent implements OnInit {
     if (!char) {
       return 0;
     }
-    return this.CHARACTER_POSITION_MAPPING[char.name];
+    return CHARACTER_POSITION_MAPPING[char.name];
   }
 }
