@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { PlayerSnapshot } from '../battle.service';
+import { PlayerSnapshot, Character } from '../battle.service';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -10,15 +10,17 @@ import { MatDialog } from '@angular/material/dialog';
 export class CharacterGridComponent implements OnInit {
   @Output() clickCharacter: EventEmitter<any> = new EventEmitter();
   @Output() nameUpdated: EventEmitter<string> = new EventEmitter();
+  @Output() selectedRemainingStocks: EventEmitter<number> = new EventEmitter();
 
-  @Input() playerSnapshot: PlayerSnapshot;
-  @Input() selectedCharacter: string;
-  @Input() playerName: string;
-  @Input() selectMode: boolean;
-  @Input() initialStockCount: boolean;
-  @Input() playerNamePlaceholder: string;
-  @Input() readyToFight: boolean;
+  @Input() initialStockCount: number;
   @Input() nameStatic: boolean;
+  @Input() playerName: string;
+  @Input() playerNamePlaceholder: string;
+  @Input() playerSnapshot: PlayerSnapshot;
+  @Input() readyToFight: boolean;
+  @Input() selectedCharacter: Character;
+  @Input() selectMode: boolean;
+  @Input() showStockSelector: boolean;
 
   player1: string;
 
@@ -27,4 +29,12 @@ export class CharacterGridComponent implements OnInit {
   constructor(private matDialog: MatDialog) { }
 
   ngOnInit() { }
+
+  range(size: number) {
+    const out = [];
+    for (let i = 0; i < size; i++) {
+      out.push(i);
+    }
+    return out;
+  }
 }

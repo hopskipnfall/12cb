@@ -101,15 +101,9 @@ export class ArenaComponent implements OnInit, OnDestroy {
 
     if (player === 'player1' && this.p1SelectMode) {
       this.battleService.player1Select(character);
-      // this.p1SelectMode = false;
     } else if (player === 'player2' && this.p2SelectMode) {
       this.battleService.player2Select(character);
-      // this.p2SelectMode = false;
     }
-
-    // if (this.player1Selected && this.player2Selected) {
-    //   this.initialCharSelect = false;
-    // }
   }
 
   playerCharClicked(player: string) {
@@ -146,6 +140,18 @@ export class ArenaComponent implements OnInit, OnDestroy {
     if (gate) {
       this.remainingStocksSelected = remainingStocks;
     }
+  }
+
+  p1RemainingStocksSelected(stocks: number) {
+    this.battleService.setRoundWinner('player1');
+    this.remainingStocksSelected = stocks;
+    this.submitRound();
+  }
+
+  p2RemainingStocksSelected(stocks: number) {
+    this.battleService.setRoundWinner('player2');
+    this.remainingStocksSelected = stocks;
+    this.submitRound();
   }
 
   updateName(player: string, name: string) {

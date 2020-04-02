@@ -1,5 +1,10 @@
 <mat-card class="player-card">
-
+  <app-stock-selector
+      *ngIf="showStockSelector"
+      [initialStockCount]="initialStockCount"
+      [maxStockCount]="selectedCharacter.stocks"
+      (selectedRemainingStocks)="selectedRemainingStocks.emit($event)">
+  </app-stock-selector>
   <mat-card-header>
     <mat-card-title>
       <mat-form-field *ngIf="!nameStatic" style="width: 87%">
@@ -15,7 +20,6 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-
     <div class="button-overlay" *ngIf="readyToFight">
       <span class="ready-to-fight" i18n="Banner indicating the player is ready to fight">Ready to Fight</span>
     </div>
@@ -25,7 +29,7 @@
           matRipple
           [matRippleDisabled]="!(selectMode && character.stocks != 0)"
           *ngFor="let character of playerSnapshot.characters"
-          [ngClass]="{'dead': character.stocks == 0, 'dying': (character.stocks != 0 && character.stocks != initialStockCount), 'selected-char': character.name == selectedCharacter, 'selectable': selectMode && character.stocks != 0 && character.name != selectedCharacter}"
+          [ngClass]="{'dead': character.stocks == 0, 'dying': (character.stocks != 0 && character.stocks != initialStockCount), 'selected-char': (selectedCharacter && (character.name == selectedCharacter.name)), 'selectable': selectMode && character.stocks != 0 && character.name != selectedCharacter}"
           (click)="clickCharacter.emit(character)">
           <div class="image-bg"
               [style.background-image]="'url(assets/icons/sekirei/' + character.name + '.png)'">

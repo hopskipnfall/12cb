@@ -7,6 +7,7 @@ import { CharacterComponent } from './character/character.component';
 import { CharacterGridComponent } from './character-grid/character-grid.component';
 import { CookieService } from 'ngx-cookie-service';
 import { FormsModule } from '@angular/forms';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
@@ -24,6 +25,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
 import { SetupComponent } from './setup/setup.component';
+import { StockSelectorComponent } from './stock-selector/stock-selector.component';
 import { WinscreenComponent } from './winscreen/winscreen.component';
 
 @NgModule({
@@ -33,6 +35,7 @@ import { WinscreenComponent } from './winscreen/winscreen.component';
     CharacterComponent,
     CharacterGridComponent,
     SetupComponent,
+    StockSelectorComponent,
     WinscreenComponent,
   ],
   imports: [
@@ -40,6 +43,7 @@ import { WinscreenComponent } from './winscreen/winscreen.component';
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
+    MatBottomSheetModule,
     MatButtonModule,
     MatCardModule,
     MatChipsModule,
@@ -60,6 +64,6 @@ import { WinscreenComponent } from './winscreen/winscreen.component';
     CookieService,
   ],
   bootstrap: [AppComponent],
-  entryComponents: []
+  entryComponents: [],
 })
 export class AppModule { }

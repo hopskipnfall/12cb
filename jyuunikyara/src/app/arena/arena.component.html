@@ -1,48 +1,5 @@
-<mat-card class="message-box" *ngIf="!initialCharSelect && !gameOver">
-  <button mat-stroked-button i18n="Undo button label" color="primary" (click)="undo()">Undo</button>
-  <mat-card-header>
-    <mat-card-title i18n="Prompt asking who won the round">Who won?</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-
-    <mat-grid-list cols="2" rowHeight="1:1">
-      <div class="centered-overlay vs-overlay">vs</div>
-      <mat-grid-tile class="character-tile"
-          matRipple
-          [ngClass]="{'round-winner': roundWinner == 'player1', 'round-loser': roundWinner == 'player2', 'selectable': (player1Selected && player2Selected)}"
-          (click)="playerCharClicked('player1')">
-          <div class="char-background"
-              [style.background-image]="player1Selected ? 'url(assets/icons/sekirei/' + player1Selected.name + '.png)' : ''">
-            <span *ngFor="let stock of range(p1RemainingStocks)">💎</span>
-          </div>
-      </mat-grid-tile>
-      <mat-grid-tile class="character-tile"
-          matRipple
-          [ngClass]="{'round-winner': roundWinner == 'player2', 'round-loser': roundWinner == 'player1', 'selectable': (player1Selected && player2Selected)}"
-          (click)="playerCharClicked('player2')">
-          <div class="char-background"
-              [style.background-image]="player2Selected ? 'url(assets/icons/sekirei/' + player2Selected.name + '.png)' : ''">
-            <span *ngFor="let stock of range(p2RemainingStocks)">💎</span>
-          </div>
-      </mat-grid-tile>
-    </mat-grid-list>
-    <div *ngIf="roundWinner">
-    <p i18n style="font-size: 13pt">How many stocks remaining?</p>
-
-    <div>
-    <button mat-stroked-button
-        i18n="Number of stocks"
-        class="button-row"
-        color="primary"
-        *ngFor="let r of range(initialStockCount)"
-        [disabled]="(roundWinner == 'player1') ? (p1RemainingStocks < r + 1) : (p2RemainingStocks < r + 1)"
-        (click)="maybeSetRemainingStocks(!(roundWinner == 'player1' ? (p1RemainingStocks < r + 1) : (p2RemainingStocks < r + 1)), r+1); submitRound()">
-      {{r + 1}}
-    </button>
-    </div>
-    </div>
-  </mat-card-content>
-</mat-card>
+<button mat-stroked-button i18n="Undo button label" color="primary" (click)="undo()">Undo</button>
+<br>
 
 <div class="wrapper">
 <app-character-grid
@@ -55,7 +12,9 @@
     (clickCharacter)="characterClicked('player1', $event)"
     (nameUpdated)="updateName('player1', $event)"
     [readyToFight]="player1Selected && !player2Selected && initialCharSelect"
-    [initialStockCount]="initialStockCount"></app-character-grid>
+    [initialStockCount]="initialStockCount"
+    [showStockSelector]="!gameOver && player1Selected && player2Selected"
+    (selectedRemainingStocks)="p1RemainingStocksSelected($event)"></app-character-grid>
 
 <app-character-grid
     [playerName]="player2Name"
@@ -67,5 +26,7 @@
     (clickCharacter)="characterClicked('player2', $event)"
     (nameUpdated)="updateName('player2', $event)"
     [readyToFight]="player2Selected && !player1Selected && initialCharSelect"
-    [initialStockCount]="initialStockCount"></app-character-grid>
+    [initialStockCount]="initialStockCount"
+    [showStockSelector]="!gameOver && player1Selected && player2Selected"
+    (selectedRemainingStocks)="p2RemainingStocksSelected($event)"></app-character-grid>
 </div>

@@ -1,0 +1,14 @@
+<div class="pikapika">
+  <p i18n style="font-size: 13pt">How many stocks remaining?</p>
+
+  <div>
+  <button mat-stroked-button
+      i18n="Number of stocks"
+      class="button-row"
+      color="primary"
+      *ngFor="let r of range(maxStockCount)"
+      (click)="recordStocks(r + 1)">
+    {{r + 1}}
+  </button>
+  </div>
+</div>
