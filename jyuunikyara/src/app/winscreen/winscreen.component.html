@@ -14,14 +14,14 @@
       <mat-grid-tile class="character-tile"
           [ngClass]="{'round-winner': winner == 'player1', 'round-loser': winner == 'player2'}">
           <div class="char-background"
-              [style.background-image]="'url(assets/icons/sekirei/' + history[history.length-1].player1Character + '.png)'">
+              [style.background-image]="'url(' + themeService.getCharacterImage(history[history.length-1].player1Character) + ')'">
             <span *ngFor="let stock of range((winner === 'player1' ? history[history.length-1].remainingStocks : 0))">💎</span>
           </div>
       </mat-grid-tile>
       <mat-grid-tile class="character-tile"
           [ngClass]="{'round-winner': winner == 'player2', 'round-loser': winner == 'player1'}">
         <div class="char-background"
-              [style.background-image]="'url(assets/icons/sekirei/' + history[history.length-1].player2Character + '.png)'">
+              [style.background-image]="'url(' + themeService.getCharacterImage(history[history.length-1].player2Character) + ')'">
           <span *ngFor="let stock of range((winner === 'player2' ? history[history.length-1].remainingStocks : 0))">💎</span>
         </div>
       </mat-grid-tile>
@@ -79,7 +79,7 @@
       <mat-grid-tile>
           <div class="char-background-slice" 
               [ngClass]="{'faded-bg': (i != 0 && round.player2Character != history[i-1].player2Character)}"
-              [style.background-image]="'url(assets/icons/sekirei/' + round.player1Character + '.png)'"></div>
+              [style.background-image]="'url(' + themeService.getCharacterImage(round.player1Character) + ')'"></div>
           <div style="margin-top: auto; margin-bottom: auto" *ngIf="!(i == 0 || round.player1Character != history[i-1].player1Character)">
             <span *ngFor="let stock of range(history[i-1].remainingStocks)">💎</span>
           </div>
@@ -87,7 +87,7 @@
       <mat-grid-tile>
         <div class="char-background-slice" 
             [ngClass]="{'faded-bg': (i != 0 && round.player1Character != history[i-1].player1Character)}"
-            [style.background-image]="'url(assets/icons/sekirei/' + round.player2Character + '.png)'"></div>
+            [style.background-image]="'url(' + themeService.getCharacterImage(round.player2Character) + ')'"></div>
           <div style="margin-top: auto; margin-bottom: auto" *ngIf="!(i == 0 || round.player2Character != history[i-1].player2Character)">
             <span *ngFor="let stock of range(history[i-1].remainingStocks)">💎</span>
           </div>
@@ -97,7 +97,7 @@
     <mat-grid-tile>
       <div class="char-background-slice faded-bg"
           *ngIf="history[history.length-1].winner == 'player1'"
-          [style.background-image]="'url(assets/icons/sekirei/' + history[history.length-1].player1Character + '.png)'">
+          [style.background-image]="'url(' + themeService.getCharacterImage(history[history.length-1].player1Character) + ')'">
       </div>
       <div style="margin-top: auto; margin-bottom: auto"
         *ngIf="history[history.length-1].winner == 'player1'">
@@ -107,7 +107,7 @@
    <mat-grid-tile>
      <div class="char-background-slice faded-bg"
          *ngIf="history[history.length-1].winner == 'player2'"
-         [style.background-image]="'url(assets/icons/sekirei/' + history[history.length-1].player2Character + '.png)'">
+         [style.background-image]="'url(' + themeService.getCharacterImage(history[history.length-1].player2Character) + ')'">
      </div>
      <div style="margin-top: auto; margin-bottom: auto"
        *ngIf="history[history.length-1].winner == 'player2'">

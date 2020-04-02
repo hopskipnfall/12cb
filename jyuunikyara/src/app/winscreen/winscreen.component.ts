@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Round, GameSnapshot } from '../battle.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ClipboardService } from '../clipboard.service';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-winscreen',
@@ -29,7 +30,8 @@ export class WinscreenComponent implements OnInit {
     private snackBar: MatSnackBar,
     private sanitizer: Sanitizer,
     private encoder: HistoryEncoderService,
-    private clipboard: ClipboardService) { }
+    private clipboard: ClipboardService,
+    public themeService: ThemeService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(m => {
