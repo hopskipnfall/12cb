@@ -18,7 +18,13 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), {
+  setHeaders: (res, path) => {
+    if (path.endsWith('.png') || path.endsWith('.jpg') || path.endsWith('svg')) {
+      res.setHeader('Cache-Control', 'max-age=31536000');
+    }
+  }
+}));
 app.use(locale(['en', 'ja'], 'en'));
 
 app.use('/*', indexRouter);
