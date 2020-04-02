@@ -10,6 +10,7 @@ export class StockSelectorComponent {
 
   @Input() initialStockCount: number;
   @Input() maxStockCount: number;
+  @Input() pos: number;
 
   constructor() { }
 

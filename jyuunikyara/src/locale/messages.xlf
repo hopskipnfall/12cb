@@ -146,13 +146,13 @@
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="1d5b0b21e18616a47f0cff7876a14d94a5879393" datatype="html">
+      <trans-unit id="37d34a242dade105f60403e7f287bb935d95bb82" datatype="html">
         <source>
-          <x id="INTERPOLATION" equiv-text="{{r + 1}}"/>
+            <x id="INTERPOLATION" equiv-text="{{r + 1}}"/>
         </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/stock-selector/stock-selector.component.html</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">8</context>
         </context-group>
         <note priority="1" from="description">Number of stocks</note>
       </trans-unit>

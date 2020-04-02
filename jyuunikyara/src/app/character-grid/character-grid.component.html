@@ -1,25 +1,25 @@
 <mat-card class="player-card">
-  <app-stock-selector
-      *ngIf="showStockSelector"
-      [initialStockCount]="initialStockCount"
-      [maxStockCount]="selectedCharacter.stocks"
-      (selectedRemainingStocks)="selectedRemainingStocks.emit($event)">
-  </app-stock-selector>
   <mat-card-header>
     <mat-card-title>
-      <mat-form-field *ngIf="!nameStatic" style="width: 87%">
+      <!-- <mat-form-field *ngIf="!nameStatic" style="width: 87%">
         <input matInput type="text" name="stockCount"
             [placeholder]="playerNamePlaceholder"
             (change)="nameUpdated.emit(playerName)"
             [(ngModel)]="playerName">
-      </mat-form-field>
-      <span class="player-name"
-          *ngIf="nameStatic">
-          {{playerName || playerNamePlaceholder}}
-        </span>
+      </mat-form-field> -->
+      <span class="player-name">
+        {{playerName || playerNamePlaceholder}}
+      </span>
     </mat-card-title>
   </mat-card-header>
-  <mat-card-content>
+  <mat-card-content style="position: relative">
+    <app-stock-selector
+        *ngIf="showStockSelector"
+        [initialStockCount]="initialStockCount"
+        [maxStockCount]="selectedCharacter.stocks"
+        [pos]="getPositionForChar(selectedCharacter)"
+        (selectedRemainingStocks)="selectedRemainingStocks.emit($event)">
+    </app-stock-selector>
     <div class="button-overlay" *ngIf="readyToFight">
       <span class="ready-to-fight" i18n="Banner indicating the player is ready to fight">Ready to Fight</span>
     </div>

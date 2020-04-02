@@ -70,12 +70,12 @@
         </context-group>
         <note priority="1" from="description">Heading for a battle replay</note>
       </trans-unit>
-      <trans-unit id="c51f4ec6b2fa480af4185b47c461e0c4f533e9f1" datatype="html">
+      <trans-unit id="37d34a242dade105f60403e7f287bb935d95bb82" datatype="html">
         <source><x id="INTERPOLATION" equiv-text="{{r + 1}}"/></source>
         <target><x id="INTERPOLATION" equiv-text="{{r + 1}}"/>機</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/arena/arena.component.html</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="sourcefile">app/stock-selector/stock-selector.component.html</context>
+          <context context-type="linenumber">8</context>
         </context-group>
         <note priority="1" from="description">Number of stocks</note>
       </trans-unit>

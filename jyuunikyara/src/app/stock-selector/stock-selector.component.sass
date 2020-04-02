@@ -1,12 +1,88 @@
 
 .pikapika
-  background-color: #111111
-  width: 200px
-  height: 200px
+  background: #c1c1c1
   position: absolute
-  float: top
-  bottom: 100px
   z-index: 9999
   border-radius: 6px
   float: left
+  padding: 6px
+  margin-left: -6px
+
+  @media screen and (max-width: 1000px)
+    width: 155px
+
+  @media screen and (max-width: 400px)
+    width: 130px
+
+  @media screen and (min-width: 1000px)
+    width: 200px
+
+$tile-bg: #616060
+
+.stock-label
+  font-size: 12pt
+  color: black
+
+.stock-tile
+  background-color: #101010
+  font-size: 14pt
+  border-radius: 6px
+
+.pos1
+  top: calc(16.666% - 1px)
+
+.pos2
+  top: calc(33.333% - 1px)
+
+.pos3
+  top: calc(50% - 1px)
+
+.pos4
+  bottom: calc(50% - 1px)
+
+.pos5
+  bottom: calc(33.333% - 1px)
+
+.pos6
+  bottom: calc(16.666% - 1px)
+
+.selectable 
+  animation: 4s ease 2s pulse infinite
+  background: $tile-bg
+  border-radius: 6px
+  float: left
   transform: scale(0.95)
+
+// Loop from 1-9.
+@for $i from 1 through 12
+  .selectable 
+    
+    // :nth-child(1-9) 
+    &:nth-child(#{$i}) 
+      
+      // Delay the animation. Delay increases as items loop.
+      animation-delay: $i * (1s / 18)
+
+@keyframes pulse 
+  3% 
+    // background: $tile-bg
+    transform: scale(0.92)
+
+  6% 
+    // background: $tile-bg
+    transform: scale(0.95)
+
+  9% 
+    background: darken($tile-bg, 9%)
+    transform: scale(0.99)
+  
+  12% 
+    // background: $tile-bg
+    transform: scale(0.95)
+
+  15%
+    background: $tile-bg
+  
+::ng-deep .mat-card-header-text
+  margin-left: 0
+  margin-right: 0

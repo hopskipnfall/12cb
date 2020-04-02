@@ -22,6 +22,21 @@ export class CharacterGridComponent implements OnInit {
   @Input() selectMode: boolean;
   @Input() showStockSelector: boolean;
 
+  const CHARACTER_POSITION_MAPPING = {
+    'luigi': 1,
+    'mario': 1,
+    'donkey_kong': 2,
+    'link': 2,
+    'samus': 3,
+    'captain_falcon': 3,
+    'ness': 4,
+    'yoshi': 4,
+    'kirby': 5,
+    'fox': 5,
+    'pikachu': 6,
+    'jigglypuff': 6,
+  };
+
   player1: string;
 
   locked = false;
@@ -36,5 +51,12 @@ export class CharacterGridComponent implements OnInit {
       out.push(i);
     }
     return out;
+  }
+
+  getPositionForChar(char: Character) {
+    if (!char) {
+      return 0;
+    }
+    return this.CHARACTER_POSITION_MAPPING[char.name];
   }
 }

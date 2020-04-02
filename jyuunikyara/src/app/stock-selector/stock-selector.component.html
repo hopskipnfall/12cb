@@ -1,14 +1,13 @@
-<div class="pikapika">
-  <p i18n style="font-size: 13pt">How many stocks remaining?</p>
+<div class="pikapika"
+     [ngClass]="{'pos1': pos == 1, 'pos2': pos == 2, 'pos3': pos == 3, 'pos4': pos == 4, 'pos5': pos == 5, 'pos6': pos == 6}">
+  <span i18n class="stock-label">How many stocks remaining?</span>
 
-  <div>
-  <button mat-stroked-button
-      i18n="Number of stocks"
-      class="button-row"
-      color="primary"
-      *ngFor="let r of range(maxStockCount)"
-      (click)="recordStocks(r + 1)">
-    {{r + 1}}
-  </button>
-  </div>
+  <mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile class="stock-tile selectable"
+        *ngFor="let r of range(maxStockCount)"
+        (click)="recordStocks(r + 1)"
+        i18n="Number of stocks">
+        {{r + 1}}
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
