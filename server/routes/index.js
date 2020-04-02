@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
   }
 
   if (!locales.find(l => req.baseUrl.startsWith('/' + l))) {
-    res.redirect(`${lang}/${req.baseUrl}`);
+    res.redirect(`/${lang}/${req.baseUrl}`);
     return;
   } else if (req.baseUrl.indexOf('.') == -1) {
     res.sendFile(path.resolve(`public/${lang}/index.html`));
