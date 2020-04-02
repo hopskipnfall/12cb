@@ -13,12 +13,12 @@
           <context context-type="linenumber">54</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/setup/setup.component.html</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="sourcefile">app/arena/arena.component.html</context>
+          <context context-type="linenumber">8</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/arena/arena.component.html</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="sourcefile">app/setup/setup.component.html</context>
+          <context context-type="linenumber">5</context>
         </context-group>
         <note priority="1" from="description">Player 1 default text</note>
       </trans-unit>
@@ -33,12 +33,12 @@
           <context context-type="linenumber">64</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/setup/setup.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="sourcefile">app/arena/arena.component.html</context>
+          <context context-type="linenumber">22</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/arena/arena.component.html</context>
-          <context context-type="linenumber">62</context>
+          <context context-type="sourcefile">app/setup/setup.component.html</context>
+          <context context-type="linenumber">9</context>
         </context-group>
         <note priority="1" from="description">Player 2 default text</note>
       </trans-unit>
@@ -109,11 +109,19 @@
         </context-group>
         <note priority="1" from="description">Page footer</note>
       </trans-unit>
+      <trans-unit id="4f26c54d5c3edadf92756d7d3ce466dde1f01e2a" datatype="html">
+        <source>Undo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/arena/arena.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">Undo button label</note>
+      </trans-unit>
       <trans-unit id="90723e2b3008fb5de06c79448bd6c0e7ba9498fb" datatype="html">
         <source>Ready to Fight</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/character-grid/character-grid.component.html</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">24</context>
         </context-group>
         <note priority="1" from="description">Banner indicating the player is ready to fight</note>
       </trans-unit>
@@ -131,28 +139,20 @@
           <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7743f18373d70339e8fd3d8c2372ba2cbba30de9" datatype="html">
-        <source>Who won?</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/arena/arena.component.html</context>
-          <context context-type="linenumber">3</context>
-        </context-group>
-        <note priority="1" from="description">Prompt asking who won the round</note>
-      </trans-unit>
       <trans-unit id="4915fc8a1583f4916e76dc53ff2f4a058d58a5b6" datatype="html">
         <source>How many stocks remaining?</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/arena/arena.component.html</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="sourcefile">app/stock-selector/stock-selector.component.html</context>
+          <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="c51f4ec6b2fa480af4185b47c461e0c4f533e9f1" datatype="html">
+      <trans-unit id="1d5b0b21e18616a47f0cff7876a14d94a5879393" datatype="html">
         <source>
-      <x id="INTERPOLATION" equiv-text="{{r + 1}}"/>
-    </source>
+          <x id="INTERPOLATION" equiv-text="{{r + 1}}"/>
+        </source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/arena/arena.component.html</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="sourcefile">app/stock-selector/stock-selector.component.html</context>
+          <context context-type="linenumber">10</context>
         </context-group>
         <note priority="1" from="description">Number of stocks</note>
       </trans-unit>
