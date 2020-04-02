@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
   const lang = guessLanguage(req);
 
   if (req.baseUrl === '') {
-    res.redirect(`/${lang}/index.html`);
+    res.redirect(`/${lang}/`);
     return;
   }
 

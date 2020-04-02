@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { PlayerSnapshot, Character } from '../battle.service';
 import { MatDialog } from '@angular/material/dialog';
+import { ThemeService } from '../theme.service';
 
 const CHARACTER_POSITION_MAPPING = {
   'luigi': 1,
@@ -41,7 +42,7 @@ export class CharacterGridComponent implements OnInit {
 
   locked = false;
 
-  constructor(private matDialog: MatDialog) { }
+  constructor(private matDialog: MatDialog, public themeService: ThemeService) { }
 
   ngOnInit() { }
 

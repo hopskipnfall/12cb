@@ -1,10 +1,11 @@
-import { BattleService } from './battle.service';
+import { BattleService, CHARS } from './battle.service';
 import { Component, Inject, LOCALE_ID } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { MatSelectChange } from '@angular/material/select';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Router, ActivatedRoute } from '@angular/router';
 import { WinscreenComponent } from './winscreen/winscreen.component';
+import { ThemeService, THEMES, Theme } from './theme.service';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,9 @@ export class AppComponent {
     { code: 'ja', display: '日本語' },
   ];
   selectedLanguage: string;
+  selectedTheme: string;
+
+  randomCharacter = CHARS[Math.floor(Math.random() * CHARS.length)];
 
   mobileQuery: MediaQueryList;
 
@@ -30,7 +34,8 @@ export class AppComponent {
     media: MediaMatcher,
     private router: Router,
     private route: ActivatedRoute,
-    private battleService: BattleService) {
+    private battleService: BattleService,
+    private themeService: ThemeService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
 
     const languageOverride = cookieService.get(this.LANGUAGE_COOKIE_NAME);
@@ -39,13 +44,18 @@ export class AppComponent {
     } else {
       this.selectedLanguage = locale.split('-')[0];
     }
+
+    this.selectedTheme = themeService.getTheme().value.name;
   }
 
   changeLocale(event: MatSelectChange) {
     this.cookieService.set(this.LANGUAGE_COOKIE_NAME, this.selectedLanguage, null, '/');
     // Go up one level and let the server decide where to send you.
     window.location.href = '../';
-    // window.location.reload();
+  }
+
+  changeTheme(event: MatSelectChange) {
+    this.themeService.setTheme(THEMES.get(this.selectedTheme));
   }
 
   showButton() {
@@ -57,13 +67,27 @@ export class AppComponent {
 
   newBattle() {
     this.battleService.clear();
-    this.router.navigate(['/']);
+    // Go up one level and let the server decide where to send you.
+    window.location.href = '../';
   }
 
   maybeClearAndGoHome() {
     if (this.showButton()) {
       this.battleService.clear();
-      this.router.navigate(['/']);
+      // Go up one level and let the server decide where to send you.
+      window.location.href = '../';
     }
+  }
+
+  undo() {
+    this.battleService.undo();
+  }
+
+  getThemes() {
+    return THEMES.values();
+  }
+
+  randomThemeImage(theme: Theme) {
+    return `assets/icons/${theme.name}/${this.randomCharacter}.${theme.imageExtension}`;
   }
 }
