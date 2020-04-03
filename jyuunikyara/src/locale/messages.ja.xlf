@@ -63,7 +63,7 @@
       </trans-unit>
       <trans-unit id="5d19483d2118b488257256767cdbb51dd63f9fea" datatype="html">
         <source>Replay</source>
-        <target>レプレイ</target>
+        <target>リプレイ</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/arena/arena.component.html</context>
           <context context-type="linenumber">74</context>
