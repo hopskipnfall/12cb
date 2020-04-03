@@ -103,8 +103,7 @@
           <x id="INTERPOLATION" equiv-text="{{r + 1}}" />
         </source>
         <target>
-          <x id="INTERPOLATION" equiv-text="{{r + 1}}" />
-          機
+          <x id="INTERPOLATION" equiv-text="{{r + 1}}" />機
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/stock-selector/stock-selector.component.html</context>
