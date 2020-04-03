@@ -10,7 +10,7 @@
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="db603c66102964ff1286513fb24bec640169b581" datatype="html">
+      <trans-unit id="a8162f996c2aaa2314509f4796ea84d6f65463dd" datatype="html">
         <source>12cb app made by <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>jonnjonn<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. Code available on <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>Github<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
         <target>開発：<x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>jonnjonn<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>　コードは<x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>こちら<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>で公開中</target>
         <context-group purpose="location">
