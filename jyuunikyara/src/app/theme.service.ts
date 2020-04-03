@@ -9,13 +9,15 @@ export interface Theme {
 export const THEMES = new Map([
   ['sekirei', {name: 'sekirei', imageExtension: 'png'}],
   ['jouske', {name: 'jouske', imageExtension: 'svg'}],
+  ['classic', {name: 'classic', imageExtension: 'png'}],
 ]);
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
-  private readonly theme: BehaviorSubject<Theme> = new BehaviorSubject(THEMES.get('sekirei'));
+  private readonly theme: BehaviorSubject<Theme> = new BehaviorSubject(
+      THEMES.get(['sekirei', 'jouske', 'classic'][Math.floor(Math.random() * 3)]));
 
   constructor() { }
 
