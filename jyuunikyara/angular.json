@@ -59,12 +59,39 @@
               ]
             },
             "ja": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ],
+
+
               "aot": true,
               "outputPath": "dist/jyuunikyara/ja/",
               "i18nFile": "src/locale/messages.ja.xlf",
               "i18nFormat": "xlf",
               "i18nLocale": "ja",
               "i18nMissingTranslation": "ignore"
+            },
+            "fast": {
+              "aot": true,
+              "outputPath": "dist/jyuunikyara/fast/"
             }
           }
         },
@@ -79,6 +106,9 @@
             },
             "ja": {
               "browserTarget": "jyuunikyara:build:ja"
+            },
+            "fast": {
+              "browserTarget": "jyuunikyara:build:fast",
             }
           }
         },

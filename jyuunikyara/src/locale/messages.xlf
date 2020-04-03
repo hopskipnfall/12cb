@@ -14,7 +14,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/arena/arena.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">5</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/setup/setup.component.html</context>
@@ -34,7 +34,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/arena/arena.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">19</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/setup/setup.component.html</context>
@@ -83,45 +83,57 @@
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="29148503e947c87d08d1ba9b988d2d84f74d1b8c" datatype="html">
-        <source>New 12cb!</source>
+      <trans-unit id="bd98548901b6b2566cb7d97875eafbe6eab370ca" datatype="html">
+        <source>
+      New
+    </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.html</context>
           <context context-type="linenumber">9</context>
         </context-group>
-        <note priority="1" from="description">Tooltip to start a new 12cb</note>
+        <note priority="1" from="description">New game button label</note>
+      </trans-unit>
+      <trans-unit id="2dadacf6e5e6d442edfa45430987a484dfb50a4a" datatype="html">
+        <source>
+      Undo
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="description">Undo button label</note>
       </trans-unit>
       <trans-unit id="fe46ccaae902ce974e2441abe752399288298619" datatype="html">
         <source>Language</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.html</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">26</context>
         </context-group>
         <note priority="1" from="description">Label for a language dropdown</note>
       </trans-unit>
-      <trans-unit id="7c487a858f113790e9ac69dca458e4cc119d3aca" datatype="html">
-        <source>
-        12cb app made by <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>jonnjonn<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. Code available on <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>Github<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. Character images drawn by <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a&gt;"/>Sekirei<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.
-      </source>
+      <trans-unit id="27a56aad79d8b61269ed303f11664cc78bcc2522" datatype="html">
+        <source>Theme</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.html</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <note priority="1" from="description">Label for a visual theme dropdown</note>
+      </trans-unit>
+      <trans-unit id="efb2f7cb58a2feb3097c49e4061a5819872ae572" datatype="html">
+        <source>
+            12cb app made by <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>jonnjonn<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. Code available on <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>Github<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. Character images drawn by <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a&gt;"/>Sekirei<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.
+          </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">45</context>
         </context-group>
         <note priority="1" from="description">Page footer</note>
-      </trans-unit>
-      <trans-unit id="4f26c54d5c3edadf92756d7d3ce466dde1f01e2a" datatype="html">
-        <source>Undo</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/arena/arena.component.html</context>
-          <context context-type="linenumber">1</context>
-        </context-group>
-        <note priority="1" from="description">Undo button label</note>
       </trans-unit>
       <trans-unit id="90723e2b3008fb5de06c79448bd6c0e7ba9498fb" datatype="html">
         <source>Ready to Fight</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/character-grid/character-grid.component.html</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">25</context>
         </context-group>
         <note priority="1" from="description">Banner indicating the player is ready to fight</note>
       </trans-unit>
@@ -143,16 +155,14 @@
         <source>How many stocks remaining?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/stock-selector/stock-selector.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="37d34a242dade105f60403e7f287bb935d95bb82" datatype="html">
-        <source>
-            <x id="INTERPOLATION" equiv-text="{{r + 1}}"/>
-        </source>
+      <trans-unit id="b80846139c44e8dc2b53f8f4a434c8e7323f49b1" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{r + 1}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/stock-selector/stock-selector.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">11</context>
         </context-group>
         <note priority="1" from="description">Number of stocks</note>
       </trans-unit>

@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BattleService, GameSnapshot, Character, Round, RoundInProgress } from '../battle.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HistoryEncoderService } from '../history-encoder.service';
 import { Subscription } from 'rxjs';
+import { Location } from '@angular/common';
 
 export interface RoundReplay {
   player1: {
@@ -51,7 +52,11 @@ export class ArenaComponent implements OnInit, OnDestroy {
 
   decoded: Round[];
 
-  constructor(private battleService: BattleService, private router: Router, private encoder: HistoryEncoderService) { }
+  constructor(private battleService: BattleService,
+              private router: Router,
+              private encoder: HistoryEncoderService,
+              private route: ActivatedRoute,
+              private location: Location) { }
 
   ngOnInit() {
     this.subscriptions.push(
@@ -81,9 +86,25 @@ export class ArenaComponent implements OnInit, OnDestroy {
       this.battleService.getGameSnapshot().subscribe((snapshot: GameSnapshot) => {
         this.snapshot = snapshot;
       }),
+
+      this.route.paramMap.subscribe(map => {
+        console.log("It changed!!!!!!!!", map);
+      })
     );
 
     this.initialStockCount = this.battleService.getInitialStockCount();
+
+    const m = this.route.snapshot.paramMap;
+    if (m.has('p1')) {
+      this.battleService.setPlayer1Name(m.get('p1'));
+    }
+    if (m.has('p2')) {
+      this.battleService.setPlayer2Name(m.get('p2'));
+    }
+    if (m.has('historyEncoding')) {
+      const loadedHistory = this.encoder.decodeHistory(m.get('historyEncoding'));
+      this.battleService.loadHistory(loadedHistory);
+    }
   }
 
   ngOnDestroy() {
@@ -129,6 +150,18 @@ export class ArenaComponent implements OnInit, OnDestroy {
     if (this.gameOver) {
       const encoded = this.encoder.encodeHistory(this.battleService.getHistory());
       this.router.navigate([`/results/${encoded}`, { p1: this.player1Name, p2: this.player2Name }]);
+    } else {
+      // Load state into the URL.
+      const encoded = this.encoder.encodeHistory(this.battleService.getHistory());
+      const urlParams: {[key: string]: string} = {};
+      if (this.player1Name) {
+        urlParams.p1 = this.player1Name;
+      }
+      if (this.player2Name) {
+        urlParams.p2 = this.player2Name;
+      }
+      const newUrl = this.router.createUrlTree([`/g/${encoded}`, urlParams]).toString();
+      this.location.go(newUrl);
     }
   }
 

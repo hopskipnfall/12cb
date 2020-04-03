@@ -5,9 +5,11 @@
   <mat-grid-list cols="2" rowHeight="1:1">
     <mat-grid-tile class="stock-tile selectable"
         *ngFor="let r of range(maxStockCount)"
-        (click)="recordStocks(r + 1)"
-        i18n="Number of stocks">
-        {{r + 1}}
+        [style.background-image]="'url(' + bgImage + ')'"
+        (click)="recordStocks(r + 1)">
+        <div class="stock-count-label-box">
+          <span class="stock-count-label" i18n="Number of stocks">{{r + 1}}</span>
+        </div>
     </mat-grid-tile>
   </mat-grid-list>
 </div>

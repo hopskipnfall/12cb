@@ -253,4 +253,21 @@ export class BattleService {
     //   this.router.navigate([`/results/${this.encoded}`, { p1: this.player1Name, p2: this.player2Name }]);
     // }
   }
+
+  loadHistory(history: Round[]) {
+    this.history = history;
+    const lastRound = history[history.length - 1];
+
+    const nextRound = new RoundInProgress();
+    if (lastRound.winner === 'player1') {
+      nextRound.player1 = {name: lastRound.player1Character, stocks: lastRound.remainingStocks};
+    } else {
+      nextRound.player2 = {name: lastRound.player2Character, stocks: lastRound.remainingStocks};
+    }
+
+    const snapshot = this.buildSnapshot();
+
+    this.snapshot.next(snapshot);
+    this.currentRound.next(nextRound);
+  }
 }

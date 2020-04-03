@@ -2,15 +2,19 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <span class="app-title" i18n (click)="maybeClearAndGoHome()">12-Character Battle</span>
+    <span class="app-title" i18n>12-Character Battle</span>
     <span class="spacer"></span>
-    <button mat-flat-button i18n="Undo button label" color="basic" (click)="undo()">Undo</button>
-    <button mat-icon-button
-        i18n-matTooltip="Tooltip to start a new 12cb"
-        matTooltip="New 12cb!"
-        matTooltipPosition="before"
-        *ngIf="showButton()"
-        (click)="newBattle()"><mat-icon>fiber_new</mat-icon></button>
+    <button mat-flat-button i18n="New game button label" color="basic"
+        *ngIf="showNewGameButton()"
+        (click)="newBattle()">
+      New
+    </button>
+    &nbsp;
+    <button mat-flat-button i18n="Undo button label" color="basic"
+        *ngIf="showUndoButton()"
+        (click)="undo()">
+      Undo
+    </button>
   </mat-toolbar-row>
 </mat-toolbar>
 

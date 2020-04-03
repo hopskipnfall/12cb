@@ -50,6 +50,7 @@ export class AppComponent {
 
   changeLocale(event: MatSelectChange) {
     this.cookieService.set(this.LANGUAGE_COOKIE_NAME, this.selectedLanguage, null, '/');
+
     // Go up one level and let the server decide where to send you.
     window.location.href = '../';
   }
@@ -58,11 +59,15 @@ export class AppComponent {
     this.themeService.setTheme(THEMES.get(this.selectedTheme));
   }
 
-  showButton() {
+  showNewGameButton() {
+    return true;
+  }
+
+  showUndoButton() {
     if (!this.route.children || this.route.children.length === 0) {
       return false;
     }
-    return this.route.snapshot.children[0].component === WinscreenComponent;
+    return this.route.snapshot.children[0].component !== WinscreenComponent;
   }
 
   newBattle() {
@@ -71,16 +76,10 @@ export class AppComponent {
     window.location.href = '../';
   }
 
-  maybeClearAndGoHome() {
-    if (this.showButton()) {
-      this.battleService.clear();
-      // Go up one level and let the server decide where to send you.
-      window.location.href = '../';
-    }
-  }
-
   undo() {
     this.battleService.undo();
+
+    // TODO: Reflect undo in the URL.
   }
 
   getThemes() {

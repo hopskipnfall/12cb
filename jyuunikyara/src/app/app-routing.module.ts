@@ -20,6 +20,10 @@ const routes: Routes = [
     path: 'results/:historyEncoding',
     component: WinscreenComponent,
   },
+  {
+    path: 'g/:historyEncoding',
+    component: ArenaComponent,
+  }
   // {
   //   path: '**',
   //   redirectTo: '',

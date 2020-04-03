@@ -23,10 +23,32 @@ $tile-bg: #616060
   font-size: 12pt
   color: black
 
+.stock-count-label-box
+  color: black
+  background-color: #616060
+
+  font-size: 20pt
+  border-radius: 6px
+  color: #fff
+  background-color: rgba(48, 48, 48, 0.95)
+  width: 50%
+  height: 50%
+
+  display: inline-flex
+  align-items: center
+
+.stock-count-label
+  width: 100%
+  text-align: center
+
+
 .stock-tile
   background-color: #101010
   font-size: 14pt
   border-radius: 6px
+  background-position: center !important
+  background-size: contain !important
+  background-repeat: no-repeat !important
 
 .pos1
   top: calc(16.666% - 1px)
@@ -73,7 +95,7 @@ $tile-bg: #616060
     transform: scale(0.95)
 
   9% 
-    background: darken($tile-bg, 9%)
+    // background: darken($tile-bg, 9%)
     transform: scale(0.99)
   
   12% 
@@ -81,7 +103,7 @@ $tile-bg: #616060
     transform: scale(0.95)
 
   15%
-    background: $tile-bg
+    // background: $tile-bg
   
 ::ng-deep .mat-card-header-text
   margin-left: 0

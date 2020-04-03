@@ -70,12 +70,12 @@
         </context-group>
         <note priority="1" from="description">Heading for a battle replay</note>
       </trans-unit>
-      <trans-unit id="37d34a242dade105f60403e7f287bb935d95bb82" datatype="html">
+      <trans-unit id="b80846139c44e8dc2b53f8f4a434c8e7323f49b1" datatype="html">
         <source><x id="INTERPOLATION" equiv-text="{{r + 1}}"/></source>
         <target><x id="INTERPOLATION" equiv-text="{{r + 1}}"/>機</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/stock-selector/stock-selector.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">11</context>
         </context-group>
         <note priority="1" from="description">Number of stocks</note>
       </trans-unit>
@@ -166,12 +166,12 @@
         </context-group>
         <note priority="1" from="description">Tooltip to start a new 12cb</note>
       </trans-unit>
-      <trans-unit id="4f26c54d5c3edadf92756d7d3ce466dde1f01e2a" datatype="html">
+      <trans-unit id="2dadacf6e5e6d442edfa45430987a484dfb50a4a" datatype="html">
         <source>Undo</source>
         <target>元に戻す</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/arena/arena.component.html</context>
-          <context context-type="linenumber">1</context>
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">15</context>
         </context-group>
         <note priority="1" from="description">Undo button label</note>
       </trans-unit>
