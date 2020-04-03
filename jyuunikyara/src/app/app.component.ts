@@ -60,7 +60,9 @@ export class AppComponent {
   }
 
   showNewGameButton() {
-    return true;
+    console.log(this.route.snapshot);
+    return this.route.snapshot.children.length > 0 && this.route.snapshot.children[0].params.historyEncoding;
+    // return true;
   }
 
   showUndoButton() {

@@ -7,8 +7,9 @@
             (change)="nameUpdated.emit(playerName)"
             [(ngModel)]="playerName">
       </mat-form-field> -->
-      <span class="player-name">
-        {{playerName || playerNamePlaceholder}}
+      <span class="player-name"
+          (click)="openNameDialog()">
+        {{playerName || playerNamePlaceholder}}<mat-icon class="name-edit-icon" *ngIf="!playerName">edit</mat-icon>
       </span>
     </mat-card-title>
   </mat-card-header>

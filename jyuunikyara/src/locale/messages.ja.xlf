@@ -10,37 +10,9 @@
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7c487a858f113790e9ac69dca458e4cc119d3aca" datatype="html">
-        <source>
-          12cb app made by
-          <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;" />
-          jonnjonn
-          <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;" />
-          . Code available on
-          <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;" />
-          Github
-          <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;" />
-          . Character images drawn by
-          <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a&gt;" />
-          Sekirei
-          <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;" />
-          .
-        </source>
-        <target>
-          開発：
-          <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;" />
-          jonnjonn
-          <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;" />
-          　イラスト：
-          <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a&gt;" />
-          sekirei
-          <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;" />
-          　コードは
-          <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;" />
-          こちら
-          <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;" />
-          で公開中
-        </target>
+      <trans-unit id="db603c66102964ff1286513fb24bec640169b581" datatype="html">
+        <source>12cb app made by <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>jonnjonn<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. Code available on <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>Github<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
+        <target>開発：<x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>jonnjonn<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>　コードは<x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>こちら<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>で公開中</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.html</context>
           <context context-type="linenumber">32</context>
@@ -213,6 +185,22 @@
           <context context-type="linenumber">15</context>
         </context-group>
         <note priority="1" from="description">Undo button label</note>
+      </trans-unit>
+      <trans-unit id="52ba948bd4e5ca9b192253ae962743ced6d0ecde" datatype="html">
+        <source>Player Name</source>
+        <target>プレイヤー名前</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/character-grid/name-edit-dialog.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="52c9a103b812f258bcddc3d90a6e3f46871d25fe" datatype="html">
+        <source>Save</source>
+        <target>セーブ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/character-grid/name-edit-dialog.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
       </trans-unit>
     </body>
   </file>

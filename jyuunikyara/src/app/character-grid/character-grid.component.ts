@@ -1,7 +1,11 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, Inject } from '@angular/core';
 import { PlayerSnapshot, Character } from '../battle.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ThemeService } from '../theme.service';
+
+interface DialogData {
+  name: string;
+}
 
 const CHARACTER_POSITION_MAPPING = {
   'luigi': 1,
@@ -17,6 +21,16 @@ const CHARACTER_POSITION_MAPPING = {
   'pikachu': 6,
   'jigglypuff': 6,
 };
+
+@Component({
+  selector: 'app-name-edit-dialog',
+  templateUrl: './name-edit-dialog.component.html',
+  styleUrls: ['./name-edit-dialog.component.sass'],
+})
+export class NameEditDialogComponent {
+  constructor(public dialogRef: MatDialogRef<NameEditDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+}
 
 @Component({
   selector: 'app-character-grid',
@@ -42,7 +56,9 @@ export class CharacterGridComponent implements OnInit {
 
   locked = false;
 
-  constructor(private matDialog: MatDialog, public themeService: ThemeService) { }
+  constructor(private matDialog: MatDialog,
+              public themeService: ThemeService,
+              private dialog: MatDialog) { }
 
   ngOnInit() { }
 
@@ -59,5 +75,16 @@ export class CharacterGridComponent implements OnInit {
       return 0;
     }
     return CHARACTER_POSITION_MAPPING[char.name];
+  }
+
+  openNameDialog() {
+    this.dialog.open(NameEditDialogComponent, {
+      // 'width': '80%',
+      data: { name: this.playerName },
+    }).afterClosed().subscribe(name => {
+      if (name) {
+        this.nameUpdated.emit(name);
+      }
+    });
   }
 }

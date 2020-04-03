@@ -51,10 +51,7 @@
         <note priority="1" from="description">Link copied to clipboard notice</note>
       </trans-unit>
       <trans-unit id="3f6e0000ce21b8ddaff9348dc0edc20569ff0eb6" datatype="html">
-        <source>
-          <x id="INTERPOLATION" equiv-text="{{winnerName}}" />
-          wins!
-        </source>
+        <source><x id="INTERPOLATION" equiv-text="{{winnerName}}"/> wins!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/winscreen/winscreen.component.html</context>
           <context context-type="linenumber">8</context>
@@ -122,33 +119,33 @@
         </context-group>
         <note priority="1" from="description">Label for a visual theme dropdown</note>
       </trans-unit>
-      <trans-unit id="efb2f7cb58a2feb3097c49e4061a5819872ae572" datatype="html">
-        <source>
-          12cb app made by
-          <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;" />
-          jonnjonn
-          <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;" />
-          . Code available on
-          <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;" />
-          Github
-          <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;" />
-          . Character images drawn by
-          <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a&gt;" />
-          Sekirei
-          <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;" />
-          .
-        </source>
+      <trans-unit id="db603c66102964ff1286513fb24bec640169b581" datatype="html">
+        <source>12cb app made by <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>jonnjonn<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. Code available on <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>Github<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.html</context>
           <context context-type="linenumber">45</context>
         </context-group>
         <note priority="1" from="description">Page footer</note>
       </trans-unit>
+      <trans-unit id="52ba948bd4e5ca9b192253ae962743ced6d0ecde" datatype="html">
+        <source>Player Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/character-grid/name-edit-dialog.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="52c9a103b812f258bcddc3d90a6e3f46871d25fe" datatype="html">
+        <source>Save</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/character-grid/name-edit-dialog.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="90723e2b3008fb5de06c79448bd6c0e7ba9498fb" datatype="html">
         <source>Ready to Fight</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/character-grid/character-grid.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">26</context>
         </context-group>
         <note priority="1" from="description">Banner indicating the player is ready to fight</note>
       </trans-unit>
@@ -174,9 +171,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="b80846139c44e8dc2b53f8f4a434c8e7323f49b1" datatype="html">
-        <source>
-          <x id="INTERPOLATION" equiv-text="{{r + 1}}" />
-        </source>
+        <source><x id="INTERPOLATION" equiv-text="{{r + 1}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/stock-selector/stock-selector.component.html</context>
           <context context-type="linenumber">11</context>

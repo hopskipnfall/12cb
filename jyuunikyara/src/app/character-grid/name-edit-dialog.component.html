@@ -1,0 +1,9 @@
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label i18n>Player Name</mat-label>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-flat-button color="primary" [mat-dialog-close]="data.name" cdkFocusInitial i18n>Save</button>
+</div>

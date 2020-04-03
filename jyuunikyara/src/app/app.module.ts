@@ -4,7 +4,7 @@ import { ArenaComponent } from './arena/arena.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CharacterComponent } from './character/character.component';
-import { CharacterGridComponent } from './character-grid/character-grid.component';
+import { CharacterGridComponent, NameEditDialogComponent } from './character-grid/character-grid.component';
 import { CookieService } from 'ngx-cookie-service';
 import { FormsModule } from '@angular/forms';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
@@ -37,6 +37,7 @@ import { WinscreenComponent } from './winscreen/winscreen.component';
     SetupComponent,
     StockSelectorComponent,
     WinscreenComponent,
+    NameEditDialogComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -64,6 +65,6 @@ import { WinscreenComponent } from './winscreen/winscreen.component';
     CookieService,
   ],
   bootstrap: [AppComponent],
-  entryComponents: [],
+  entryComponents: [NameEditDialogComponent],
 })
 export class AppModule { }
