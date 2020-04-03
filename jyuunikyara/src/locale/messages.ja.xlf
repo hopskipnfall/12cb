@@ -188,7 +188,7 @@
       </trans-unit>
       <trans-unit id="52ba948bd4e5ca9b192253ae962743ced6d0ecde" datatype="html">
         <source>Player Name</source>
-        <target>プレイヤー名前</target>
+        <target>プレイヤーの名前</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/character-grid/name-edit-dialog.component.html</context>
           <context context-type="linenumber">3</context>
