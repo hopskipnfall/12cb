@@ -13,6 +13,8 @@ export class StockSelectorComponent {
   @Input() pos: number;
   @Input() bgImage: string;
 
+  @Input() move: string;
+
   constructor() { }
 
   recordStocks(stocks: number) {
@@ -20,6 +22,8 @@ export class StockSelectorComponent {
       console.log(stocks);
       this.selectedRemainingStocks.emit(stocks);
     }
+
+    console.error('HEY', this.move);
   }
 
   range(size: number) {

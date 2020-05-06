@@ -1,10 +1,39 @@
+@mixin aspect-ratio($width, $height) 
+  position: relative
+  &:before
+    display: block
+    content: ""
+    width: 100%
+    padding-top: ($height / $width) * 100%
+  
+  > .content 
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+  
 $tile-bg: #929292;
+
+.spacer
+  flex: 1 1 auto
+
+.middlemiddle
+  flex: 1 1 auto
   
 .message-box
   margin-bottom: 10px
 
 .wrapper
   display: flex
+
+.middlebox
+  @include aspect-ratio(4, 3)
+  width: 643px * 4 / 3
+
+  .content
+    padding: 20px
+  
 
 .character-tile
   background-size: contain
@@ -96,3 +125,10 @@ $tile-bg: #929292;
   height: 60px
   font-size: 15pt
   margin-bottom: 8px
+
+.themeIcon
+  // height: 20px
+
+  background-position: right !important
+  background-repeat: no-repeat !important
+  background-size: contain !important

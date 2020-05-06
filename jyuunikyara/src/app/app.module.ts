@@ -27,6 +27,7 @@ import { NgModule } from '@angular/core';
 import { SetupComponent } from './setup/setup.component';
 import { StockSelectorComponent } from './stock-selector/stock-selector.component';
 import { WinscreenComponent } from './winscreen/winscreen.component';
+import { ThemeService } from './theme.service';
 
 @NgModule({
   declarations: [

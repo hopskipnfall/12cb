@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { BattleService, GameSnapshot, Character, Round, RoundInProgress } from '../battle.service';
+import { BattleService, CHARS, GameSnapshot, Character, Round, RoundInProgress } from '../battle.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HistoryEncoderService } from '../history-encoder.service';
 import { Subscription } from 'rxjs';
 import { Location } from '@angular/common';
+import { ThemeService, THEMES, Theme } from '../theme.service';
+import { MatSelectChange } from '@angular/material/select';
 
 export interface RoundReplay {
   player1: {
@@ -37,7 +39,11 @@ export class ArenaComponent implements OnInit, OnDestroy {
   p1RemainingStocks = 0;
   p2RemainingStocks = 0;
 
+  randomCharacter = CHARS[Math.floor(Math.random() * CHARS.length)];
+
   snapshot: GameSnapshot;
+  
+  selectedTheme: string;
 
   p1SelectMode = true;
   p2SelectMode = true;
@@ -50,13 +56,19 @@ export class ArenaComponent implements OnInit, OnDestroy {
 
   initialCharSelect = true;
 
+  readonly LANGUAGES = [
+    { code: 'en', display: 'English' },
+    { code: 'ja', display: '日本語' },
+  ];
+
   decoded: Round[];
 
   constructor(private battleService: BattleService,
               private router: Router,
               private encoder: HistoryEncoderService,
               private route: ActivatedRoute,
-              private location: Location) { }
+              private location: Location,
+              private themeService: ThemeService) { }
 
   ngOnInit() {
     this.subscriptions.push(
@@ -105,6 +117,8 @@ export class ArenaComponent implements OnInit, OnDestroy {
       const loadedHistory = this.encoder.decodeHistory(m.get('historyEncoding'));
       this.battleService.loadHistory(loadedHistory);
     }
+
+    this.selectedTheme = this.themeService.getTheme().value.name;
   }
 
   ngOnDestroy() {
@@ -189,5 +203,35 @@ export class ArenaComponent implements OnInit, OnDestroy {
     } else {
       this.battleService.setPlayer2Name(name);
     }
+  }
+
+  getThemes() {
+    return THEMES.values();
+  }
+
+  randomThemeImage(theme: Theme) {
+    return `assets/icons/${theme.name}/${this.randomCharacter}.${theme.imageExtension}`;
+  }
+
+  changeTheme(event: MatSelectChange) {
+    this.themeService.setTheme(THEMES.get(this.selectedTheme));
+  }
+
+  showNewGameButton() {
+    console.log(this.route.snapshot);
+    return this.route.snapshot.children.length > 0 && this.route.snapshot.children[0].params.historyEncoding;
+    // return true;
+  }
+
+  newBattle() {
+    this.battleService.clear();
+    // Go up one level and let the server decide where to send you.
+    window.location.href = '../';
+  }
+
+  undo() {
+    this.battleService.undo();
+
+    // TODO: Reflect undo in the URL.
   }
 }

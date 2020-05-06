@@ -20,6 +20,7 @@
         [maxStockCount]="selectedCharacter.stocks"
         [pos]="getPositionForChar(selectedCharacter)"
         [bgImage]="selectedCharacter ? themeService.getCharacterImage(selectedCharacter.name) : ''"
+        [move]="pos"
         (selectedRemainingStocks)="selectedRemainingStocks.emit($event)">
     </app-stock-selector>
     <div class="button-overlay" *ngIf="readyToFight">
