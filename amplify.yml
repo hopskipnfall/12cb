@@ -8,6 +8,8 @@ backend:
         - amplifyPush --simple
 frontend:
   phases:
+    prebuild:
+      commands: 'cd jyuunikyara; npm install; cd -;'
     build:
       commands:
         - 'npm run buildbuild --prefix=jyuunikyara'
