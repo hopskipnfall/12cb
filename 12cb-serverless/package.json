@@ -1,0 +1,16 @@
+{
+  "name": "12cb-serverless",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "start": "./node_modules/.bin/serverless offline -s dev",
+    "debug": "set SLS_DEBUG=* && node --inspect /usr/local/lib/node_modules/serverless/bin/serverless offline -s dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless-offline": "^6.5.0"
+  }
+}
