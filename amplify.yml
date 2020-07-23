@@ -18,6 +18,6 @@ frontend:
     # IMPORTANT - Please verify your build output directory
     baseDirectory: jyuunikyara/dist/jyuunikyara/en
     files:
-      - '/**/*'
+      - '**/*'
   cache:
-    paths: []
+    paths:
