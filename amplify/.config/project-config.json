@@ -6,7 +6,7 @@
         "framework": "angular",
         "config": {
             "SourceDir": "jyuunikyara",
-            "DistributionDir": "dist",
+            "DistributionDir": "jyuunikyara/dist",
             "BuildCommand": "npm run-script build",
             "StartCommand": "npm run servehttps --prefix=jyuunikyara"
         }
