@@ -12,6 +12,7 @@
     "e2e": "ng e2e",
     "int:extract": "ng xi18n --output-path locale",
     "servehttps": "ng serve --prod --configuration=production --port=443",
+    "buildbuild": "ng build --prod --base-href=\"/en/\" --configuration=production && ng build --prod  --base-href=\"/ja/\" --configuration=ja",
     "buildprod": "ng build --prod --base-href=\"/en/\" --configuration=production && ng build --prod  --base-href=\"/ja/\" --configuration=ja && rm -rf ../server/public/en && rm -rf ../server/public/ja && cp -r dist/jyuunikyara/* ../server/public"
   },
   "private": true,

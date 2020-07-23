@@ -9,7 +9,8 @@ backend:
 frontend:
   phases:
     build:
-      commands: []
+      commands:
+        - 'npm run buildbuild --prefix=jyuunikyara'
   artifacts:
     # IMPORTANT - Please verify your build output directory
     baseDirectory: /jyuunikyara/dist/jyuunikyara/en/
