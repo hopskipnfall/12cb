@@ -27,6 +27,7 @@ import { NgModule } from '@angular/core';
 import { SetupComponent } from './setup/setup.component';
 import { StockSelectorComponent } from './stock-selector/stock-selector.component';
 import { WinscreenComponent } from './winscreen/winscreen.component';
+import { OnetwocbComponentsModule } from 'onetwocb-components';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { WinscreenComponent } from './winscreen/winscreen.component';
     MatSnackBarModule,
     MatToolbarModule,
     MatTooltipModule,
+    // OnetwocbComponentsModule,
   ],
   providers: [
     CookieService,
