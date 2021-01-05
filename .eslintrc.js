@@ -51,6 +51,8 @@ module.exports = {
 
     'import/no-extraneous-dependencies': 'warn',
     '@typescript-eslint/indent': 'off',
+    'max-classes-per-file': 'off',
+    '@typescript-eslint/lines-between-class-members': 'off',
   },
   ignorePatterns: [
     'node_modules/**',
