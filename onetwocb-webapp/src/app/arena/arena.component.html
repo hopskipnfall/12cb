@@ -1,19 +1,19 @@
-<div style="display: flex; width:500px; flex-direction: row;">
-<div style="width: 200px; background-color: #424242">
-<onetwocb-character-grid
-    [characterGridData]="characterGridData"
-    [columns]="3"
-    [style]="characterGridStyle"
-    (tileClicked)="tileClicked($event)"
-></onetwocb-character-grid>
-</div>
-
-<div style="width: 200px; background-color: #424242">
+<div style="display: flex; width: 500px; flex-direction: row">
+  <div style="width: 200px; background-color: #424242">
     <onetwocb-character-grid
-        [characterGridData]="characterGridData"
-        [columns]="3"
-        [style]="characterGridStyle"
-        (tileClicked)="tileClicked($event)"
+      [characterGridData]="characterGridData"
+      [columns]="3"
+      [style]="characterGridStyle"
+      (tileClicked)="tileClicked($event)"
     ></onetwocb-character-grid>
-    </div>
+  </div>
+
+  <div style="width: 200px; background-color: #424242">
+    <onetwocb-character-grid
+      [characterGridData]="characterGridData"
+      [columns]="3"
+      [style]="characterGridStyle"
+      (tileClicked)="tileClicked($event)"
+    ></onetwocb-character-grid>
+  </div>
 </div>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CharacterGridCell, CharacterGridStyle } from 'onetwocb-components';
 
-
 let i = 0;
 const props: ('selectable' | 'selected' | 'disabled')[] = [
   'selectable',
@@ -21,14 +20,12 @@ function makeCharCell(name: string): CharacterGridCell {
 @Component({
   selector: 'app-arena',
   templateUrl: './arena.component.html',
-  styleUrls: ['./arena.component.scss']
+  styleUrls: ['./arena.component.scss'],
 })
 export class ArenaComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   title = 'example-app';
 

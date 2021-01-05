@@ -2,4 +2,5 @@ jyuunikyara/
 onetwocb-webapp/dist/
 node_modules/
 server/
+amplify/
 package-lock.json
