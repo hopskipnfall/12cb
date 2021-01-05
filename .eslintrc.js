@@ -57,7 +57,8 @@ module.exports = {
     'server/**',
     'amplify/**',
     'jyuunikyara/**',
-    'jyuunikyara/dist/**',
+    'onetwocb-webapp/e2e/**', // TODO: Remove.
+    'onetwocb-webapp/dist/**',
     'coverage/**',
     'main.js',
   ],
