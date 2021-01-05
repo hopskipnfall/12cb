@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CharacterGridCell, CharacterGridStyle } from 'onetwocb-components';
+import {
+  CellState,
+  CharacterGridCell,
+  CharacterGridStyle,
+} from 'onetwocb-components';
 import { Subscription } from 'rxjs';
 import {
   BattleService,
@@ -97,7 +101,7 @@ export class ArenaComponent implements OnInit {
       return;
     }
     this.p1Data = this.snapshot.player1.characters.map((char) => {
-      let state: 'selectable' | 'selected' | 'disabled';
+      let state: CellState;
       if (char.stocks === 0) {
         state = 'disabled';
       } else if (
@@ -113,12 +117,15 @@ export class ArenaComponent implements OnInit {
         imageUrl: `assets/icons/nanakyou/${char.name}.png`,
         state,
         clickable: true,
+        selectedBgColorOverride: this.nanakyouAccentColorForCharacter(
+          char.name,
+        ),
       };
       return out;
     });
 
     this.p2Data = this.snapshot.player2.characters.map((char) => {
-      let state: 'selectable' | 'selected' | 'disabled';
+      let state: CellState;
       if (char.stocks === 0) {
         state = 'disabled';
       } else if (
@@ -134,9 +141,34 @@ export class ArenaComponent implements OnInit {
         imageUrl: `assets/icons/nanakyou/${char.name}.png`,
         state,
         clickable: true,
+        selectedBgColorOverride: this.nanakyouAccentColorForCharacter(
+          char.name,
+        ),
       };
       return out;
     });
+  }
+
+  private nanakyouAccentColorForCharacter(
+    character: string,
+  ): string | undefined {
+    console.log('logs', character);
+    switch (character) {
+      case 'captain falcon':
+        return undefined;
+      case 'link':
+        return '#c000ff';
+      case 'jigglypuff':
+        return '#00ffff';
+      case 'donkey_kong':
+        return '#c000ff';
+      case 'ness':
+        return '#00b8ff';
+      case 'fox':
+        return '#00a1ff';
+      default:
+        return undefined;
+    }
   }
 
   tileClicked(id: string) {
