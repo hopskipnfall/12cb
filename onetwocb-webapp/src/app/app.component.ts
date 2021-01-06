@@ -15,10 +15,12 @@ export class AppComponent {
     // private cookieService: CookieService,
     media: MediaMatcher,
     private router: Router,
-    private route: ActivatedRoute,
-  ) // private battleService: BattleService,
-  // private themeService: ThemeService
-  {
+    private route: ActivatedRoute, // private battleService: BattleService, // private themeService: ThemeService
+  ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
+  }
+
+  newBattle() {
+    window.location.reload();
   }
 }

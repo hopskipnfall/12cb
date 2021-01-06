@@ -1,0 +1,46 @@
+a {
+  color: white;
+}
+.outlet-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.footer {
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.sidenav-container {
+  flex: 1;
+}
+
+.full-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.app-title {
+  font-size: 15pt;
+  margin-left: 5px;
+}
+
+.sidenav-content {
+  width: 300px;
+  padding-top: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.themeIcon {
+  height: 20px;
+}
