@@ -1,0 +1,29 @@
+<div
+  style="
+    display: flex;
+    width: 500px;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #d1ecff6b;
+    margin-top: 10px;
+  "
+>
+  <div style="width: 50%; margin: 5px">
+    <onetwocb-character-grid
+      [characterGridData]="p1Data"
+      [columns]="3"
+      [style]="characterGridStyle"
+      (tileClicked)="characterClicked('player1', $event)"
+    ></onetwocb-character-grid>
+  </div>
+
+  <div style="width: 50%; margin: 5px">
+    <onetwocb-character-grid
+      [characterGridData]="p2Data"
+      [columns]="3"
+      [style]="characterGridStyle"
+      (tileClicked)="characterClicked('player2', $event)"
+    ></onetwocb-character-grid>
+  </div>
+</div>
