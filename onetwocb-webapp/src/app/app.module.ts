@@ -1,4 +1,10 @@
 import { NgModule } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OnetwocbComponentsModule } from 'onetwocb-components';
@@ -14,6 +20,12 @@ import { ArenaComponent } from './arena/arena.component';
     AppRoutingModule,
     OnetwocbComponentsModule,
     BrowserAnimationsModule,
+    MatSidenavModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatDividerModule,
+    MatSelectModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
